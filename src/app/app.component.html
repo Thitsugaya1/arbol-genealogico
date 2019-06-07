@@ -1,31 +1,26 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-  <a href="#" class="navbar-brand"><img src="./../assets/nav/logo.png"></a>
-  <button type="button" class="navbar-toggler" data-toggle="collapse"
-          data-target="#navbarResponsive">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarResponsive">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="#home">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#sectiona">section 1</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#sectionb">section 2</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#sectionc">sectoin 3</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#sectiond">section 4</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#sectione">section 5</a>
-      </li>
-    </ul>
-  </div>
+    <a href="#" class="navbar-brand"><img src="./../assets/logo.png"></a> <!-- Se inserta el logo de la página-->
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+    data-target="#navbarResponsive"> <!-- Hace que la pagina sea responsive  -->
+        <span class="navbar-toggler-icon"></span> <!-- Se crea el icono de mennú cuando la pantalla sea compacta -->
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#home">Inicio</a> <!-- Se crea el item inicio -->
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#sectiona">Cuenta</a> <!--Se crea el item cuenta -->
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#sectionb">Notificaciones</a><!-- Se crea el item notificaciones -->
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#sectionc">Salir</a> <!--Se crea el item para salir  -->
+            </li>
+
+        </ul>
+    </div>
 </nav>
 <app-main></app-main>
 <router-outlet></router-outlet>
