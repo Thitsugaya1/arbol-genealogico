@@ -24,6 +24,20 @@ body {
   background: rgba(0, 0, 0, 0.6)!important;
 }
 
+.custom-box{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reg-form-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .navbar-brand img {
     height: 4rem;
 }
@@ -127,6 +141,7 @@ h3.heading {
 }
 .feature .fas, .fab {
   color: #E74C3C;
+  padding-bottom: 1rem;
 }
 .feature h3{
   font-size: 1.3rem;
