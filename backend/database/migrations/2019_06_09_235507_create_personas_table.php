@@ -24,7 +24,7 @@ class CreatePersonasTable extends Migration
 			$table->softDeletes();
             $table->timestamps();
 			$table->foreign('ref_arbol')
-                    ->references('id')->on('arbols')
+                    ->references('id')->on('arbols');
         });
     }
 
