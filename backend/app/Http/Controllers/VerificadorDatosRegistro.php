@@ -34,7 +34,7 @@ class VerificadorDatorRegistro extends Controller
 
     }
 
-    public function verificacionInicioSesion(Request $request)
+    public function iniciarSesion(Request $request)
     {
         $input = $request->only(['correo','contraseña']);
         $validator = Validator::make($request->all(), [
