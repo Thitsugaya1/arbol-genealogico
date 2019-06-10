@@ -33,3 +33,18 @@ class VerificadorDatorRegistro extends Controller
         return response()->json(['msg'=> 'Usuario guardado con exito', 'estado'], 201);
 
     }
+
+    public function verificacionInicioSesion(Request $request)
+    {
+        $input = $request->only(['correo','contraseña']);
+        $validator = Validator::make($request->all(), [
+            'correo' => 'required|string|max:255',
+            'contraseña' => 'required|string|max:255',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors'=>$validator->errors()->all()], 422);
+        }
+        
+    }
+}
