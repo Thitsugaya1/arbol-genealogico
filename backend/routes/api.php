@@ -23,3 +23,5 @@ Route::middleware('auth:api')->group(function () {
         return auth('api')->user();
     });
 });
+
+Route::post('/register', 'CuentaController@nuevoUsuario');
