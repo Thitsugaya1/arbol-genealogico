@@ -40,10 +40,10 @@ class CuentaController extends Controller
 
     public function iniciarSesion(Request $request)
     {
-        $input = $request->only(['correo','contraseña']);
+        $input = $request->only(['correo','contrasena']);
         $validator = Validator::make($request->all(), [
             'correo' => 'required|string|max:255',
-            'contraseña' => 'required|string|max:255',
+            'contrasena' => 'required|string|max:255',
         ]);
 
         if ($validator->fails()) {
