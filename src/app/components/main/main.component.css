@@ -23,6 +23,9 @@ body {
 .card{
   background: rgba(0, 0, 0, 0.6)!important;
 }
+.reg-form-card{
+  background: rgba(156, 38, 25, 0.1)!important;
+}
 
 .custom-box{
   display: flex;
