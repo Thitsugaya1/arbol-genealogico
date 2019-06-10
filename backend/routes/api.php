@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 
 // RUTAS PUBLICAS, NO NECESITAN AUTORIZACION.
 Route::post('/login', 'CuentaController@iniciarSesion')->name('login');
+Route::post('/register', 'CuentaController@nuevoUsuario');
 Route::get('/unauthorized', function(){ return response(['msg' => 'unauthorized'], 401); })->name('unauthorized');
 // RUTAS PRIVADAS, ESTAS SI NECESITAN AUTORIZACION.
 Route::middleware('auth:api')->group(function () {
@@ -24,4 +25,3 @@ Route::middleware('auth:api')->group(function () {
     });
 });
 
-Route::post('/register', 'CuentaController@nuevoUsuario');
