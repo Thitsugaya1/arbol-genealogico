@@ -15,7 +15,13 @@ class CreateArbolsTable extends Migration
     {
         Schema::create('arbols', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nombre');
+            $table->bigInteger('ref_usuario');
+
+            $table->softDeletes();
             $table->timestamps();
+
+            $table->foreign('ref_usuario')->references('id')->on('usuarios');
         });
     }
 

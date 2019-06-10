@@ -15,7 +15,16 @@ class CreateParentescosTable extends Migration
     {
         Schema::create('parentescos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('relacion');
+            $table->bigInteger('ref_persona');
+            $table->bigInteger('ref_persona2');
+            $table->bigInteger('ref_parentesco');
+            $table->softDeletes();
             $table->timestamps();
+
+            $table->foreign('ref_persona')->references('id')->on('personas');
+            $table->foreign('ref_persona2')->references('id')->on('personas');
+            $table->foreign('ref_parentesco')->references('id')->on('parentescos');
         });
     }
 
