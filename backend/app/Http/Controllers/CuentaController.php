@@ -43,12 +43,14 @@ class CuentaController extends Controller
      */
     public function iniciarSesion(Request $request)
     {
+        // Variables ingresadas en el request
         $input = $request->only(['correo','contrasena']);
         $validator = Validator::make($request->all(), [
-            'correo' => 'required|string|max:255',
+            'correo' => 'required|string|max:255|exists:usuarios',
             'contrasena' => 'required|string|max:255',
         ]);
 
+        // Se validan lo errores
         if ($validator->fails()) {
             return response()->json(['errors'=>$validator->errors()->all()], 422);
         }
