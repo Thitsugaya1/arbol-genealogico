@@ -12,15 +12,57 @@ class CuentaController extends Controller
     {
         //Variables necesarias que fueron ingresadas
         $input = $request->only(['correo', 'nombre', 'apellidos', 'contrasena']);
+        //Arreglo con los mensajes de error en español
+        $mensajes_error = [
+            'nombre.required'=> 'El nombre es obligatorio',
+            'nombre.string'=> 'El nombre debe contener al menos una letra',
+            'nombre.max'=> 'El nombre es demasiado largo',
+            'nombre.min'=> 'El nombre es demasiado corto',
+            'nombre.regex'=> 'El nombre solo debe contener letras',
+
+            'correo.required'=> 'El correo es obligatorio',
+            'correo.string'=> 'El correo debe tener al menos una letra',
+            'correo.email'=> 'El correo no sigue el formato @servidor_host.dominio_web',
+            'correo.max'=> 'El correo es demasiado largo',
+            'correo.min'=> 'El correo es demasiado corto',
+            'correo.unique'=> 'El correo ya esta en uso',
+            'correo.regex'=> 'El correo debe empezar con una letra',//no funca
+
+            'ap_paterno.required'=> 'El apellido paterno es obligatorio',
+            'ap_paterno.string'=> 'El apellido paterno debe contener al menos una letra',
+            'ap_paterno.max'=> 'El apellido paterno es demasiado largo',
+            'ap_paterno.min'=> 'El apellido paterno es demasiado corto',
+
+            'ap_materno.required'=> 'El apellido materno es obligatorio',
+            'ap_materno.string'=> 'El apellido materno debe contener al menos una letra',
+            'ap_materno.max'=> 'El apellido materno es demasiado largo',
+            'ap_materno.min'=> 'El apellido materno es demasiado corto',
+
+            'contrasena.required'=> 'El contraseña es obligatoria',
+            'contrasena.string'=> 'La contraseña debe contener al menos una letra',
+            'contrasena.max'=> 'La contraseña es demasiado larga. Máximo 255 caracteres',
+            'contrasena.min'=> 'La contraseña es demasiado corta. Ingrese al menos 4 caracteres'
+        ];
         //Verifica el buen ingreso de datos en los campos requeridos
         $validator = Validator::make($request->all(), [
+<<<<<< HEAD
             'nombre' => 'required|string|max:255',
             'correo' => 'required|string|email|max:255|unique:usuarios',
             'ap_paterno' => 'required|string|max:255',
             'ap_materno' => 'required|string|max:255',
-            'contrasena' => 'required|string|max:255',
+            'contrasena' => 'required|string|max:255'
         ]);
+
         //En caso de una falla en los datos capturados se retorna un codigo de respuesta de error de semantica
+=======
+            'nombre' => 'required|string|max:255|min:2|regex:/(^([a-zA-Z]+)?$)/u',
+            'correo' => array('required','string','email','max:255','min:8','unique:usuarios'),
+            'ap_paterno' => 'required|string|max:255|min:2|regex:/(^([a-zA-Z]+)?$)/u',
+            'ap_materno' => 'required|string|max:255|min:2|regex:/(^([a-zA-Z]+)?$)/u',
+            'contrasena' => 'required|string|max:255|min:4',
+        ], $mensajes_error);
+        //En caso de una falla en los datos capturados se retorna un codigo de respuesta de error de semantica 
+>>>>>>> Cordero
         if ($validator->fails()) {
             return response()->json(['errors'=>$validator->errors()->all()], 422);
         }
@@ -34,9 +76,12 @@ class CuentaController extends Controller
         //guarda el objeto en la base de datos
         $nuevoUsuario->save();
         //retorna un mensaje informando que la operacion fue exitosa, junto a un codigo de respuesta de peticion completada
-        return response()->json(['msg'=> 'Usuario guardado con exito', 'estado'], 201);
+        return response()->json(['msg'=> 'Usuario guardado con exito', 'estado'], 201); ];
+
 
     }
+
+
     /**
      * Metodo para iniciar sesion.
      * @author Bastian Sepulveda, Jesus Moris
@@ -50,9 +95,21 @@ class CuentaController extends Controller
             'contrasena' => 'required|string|max:255',
         ]);
 
+        $mensajes_error = [
+
+            'correo.required'=> 'El correo es obligatorio',
+            'correo.string'=> 'El correo debe tener al menos una letra',
+            'correo.email'=> 'El correo no sigue el formato @servidor_host.dominio_web',
+            'correo.max'=> 'El correo es demasiado largo',
+            'correo.min'=> 'El correo es demasiado corto',
+            'correo.regex'=> 'El correo debe empezar con una letra',//no funca
+
+            'contrasena.required'=> 'El contraseña es obligatoria'
+        ];
+
         // Se validan lo errores
         if ($validator->fails()) {
-            return response()->json(['errors'=>$validator->errors()->all()], 422);
+            return response()->json(['errors'=>$mensajes_error], 422);
         }
         // Se obtiene el usuario segun su correo
         $user = \App\Usuario::where('correo', $request->correo)->first();
