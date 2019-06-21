@@ -1,0 +1,45 @@
+.ko-title {
+  color: white;
+  font-family: Futura, Impact, Helvetica, Arial, sans-serif;
+  background-size: cover;
+  background: url(../../../assets/gif2.gif)repeat-x;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  font-size: 20vw;
+  text-align: center;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.ko-subtitle {
+  color: white;
+  font-family: Futura, Impact, Helvetica, Arial, sans-serif;
+  background-size: cover;
+  background: url(../../../assets/gif2.gif)repeat-x;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  font-size: 5vw;
+  text-align: center;
+  margin-bottom: 0px;
+  margin-top: 6rem;
+}
+
+.ko-icon {
+  background-size: cover;
+  background: url(../../../assets/gif2.gif)repeat-x;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  margin-bottom: 10rem;
+  margin-top: 0;
+}
+
+.about-box{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+header {
+  background: black;
+}
