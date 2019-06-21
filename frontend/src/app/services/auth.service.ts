@@ -12,20 +12,21 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
   headers: HttpHeaders = new HttpHeaders({
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
   });
-  registerUser(nombres: string, apellidoPaterno: string, apellidoMaterno: string, email: string, password: string){
+  registerUser(correo: string, nombre: string, ap_paterno: string, ap_materno: string, contrasena: string){
     const urlApi = 'http://localhost:8000/api/register';
     return this.http.post<UserInterface>(urlApi,
-      {nombres, apellidoPaterno, apellidoMaterno, email, password},
+      {correo, nombre, ap_paterno, ap_materno, contrasena},
       {headers: this.headers}
       ).pipe(map(data => data));
   }
 
-  loginUser(email: string, password: string): Observable<any> {
+  loginUser(correo: string, contrasena: string): Observable<any> {
     const urlApi = 'http://localhost:8000/api/register';
     return this.http.post<UserInterface>(urlApi,
-      {email, password},
+      {correo, contrasena},
       {headers: this.headers})
       .pipe(map(data => data));
   }

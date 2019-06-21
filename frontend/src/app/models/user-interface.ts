@@ -1,7 +1,7 @@
 export interface UserInterface {
-  nombre?: string;
-  apellidoPaterno?: string;
-  apellidoMaterno?: string;
   correo?: string;
-  password?: string;
+  nombre?: string;
+  ap_paterno?: string;
+  ap_materno?: string;
+  contrasena?: string;
 }
