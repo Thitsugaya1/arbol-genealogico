@@ -15,10 +15,13 @@ export class AuthService {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
   });
+
   registerUser(correo: string, nombre: string, ap_paterno: string, ap_materno: string, contrasena: string){
     const urlApi = 'http://localhost:8000/api/register';
-    return this.http.post<UserInterface>(urlApi,
-      {correo, nombre, ap_paterno, ap_materno, contrasena},
+    let json_body = {correo: correo, nombre: nombre, ap_paterno: ap_paterno, ap_materno: ap_materno, contrasena: contrasena};
+    return this.http.post<UserInterface>(
+      urlApi,
+      json_body,
       {headers: this.headers}
       ).pipe(map(data => data));
   }

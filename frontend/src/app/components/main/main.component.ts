@@ -11,20 +11,20 @@ export class MainComponent implements OnInit {
 
   constructor(private authService: AuthService) { }
   private user: UserInterface = {
+    correo: '',
     nombre: '',
     ap_paterno: '',
     ap_materno: '',
-    correo: '',
     contrasena: ''
   };
 
   onRegister() : void {
     this.authService.registerUser(
+      this.user.correo,
       this.user.nombre,
       this.user.ap_paterno,
       this.user.ap_materno,
-      this.user.correo,
-      this.user.contrasena
+      this.user.contrasena,
     ).subscribe(
       user => {
         console.log(user);
