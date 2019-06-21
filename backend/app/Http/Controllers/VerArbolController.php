@@ -6,5 +6,7 @@ use Illuminate\Http\Request;
 
 class VerArbolController extends Controller
 {
-    //
+    public function verArbol(){
+        //
+    }
 }
