@@ -26,7 +26,6 @@ class CuentaController extends Controller
             'correo.max'=> 'El correo es demasiado largo',
             'correo.min'=> 'El correo es demasiado corto',
             'correo.unique'=> 'El correo ya esta en uso',
-            'correo.regex'=> 'El correo debe empezar con una letra',//no funca
 
             'ap_paterno.required'=> 'El apellido paterno es obligatorio',
             'ap_paterno.string'=> 'El apellido paterno debe contener al menos una letra',
@@ -86,7 +85,6 @@ class CuentaController extends Controller
             'correo.email'=> 'El correo no sigue el formato @dominio.tld',
             'correo.max'=> 'El correo es demasiado largo',
             'correo.min'=> 'El correo es demasiado corto',
-            'correo.regex'=> 'El correo debe empezar con una letra',//no funca
             'contrasena.required'=> 'La contraseña es obligatoria'
         ];
 
