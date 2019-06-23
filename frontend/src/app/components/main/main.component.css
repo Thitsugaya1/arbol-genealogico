@@ -19,6 +19,13 @@ body {
     letter-spacing: .1rem;
     background: rgba(0, 0, 0, 0.6)!important;
 }
+.let p {
+    text-transform: lowercase;
+}
+
+.let p:first-letter {
+    text-transform: uppercase;
+}
 
 .card{
   background: rgba(0, 0, 0, 0.6)!important;
