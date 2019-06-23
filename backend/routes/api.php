@@ -25,4 +25,3 @@ Route::middleware('auth:api')->group(function () {
     });
     Route::post('/arbol', 'ArbolController@crearArbol');
 });
-
