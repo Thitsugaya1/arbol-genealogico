@@ -69,8 +69,8 @@ right connector from last child*/
 }
 
 .tree li a{
-  border: 1px solid #ccc;
-  padding: 5px 10px;
+  border: 3px solid #ccc;
+  padding: 10px 10px;
   text-decoration: none;
   color: #666;
   font-family: arial, verdana, tahoma;
@@ -99,9 +99,34 @@ right connector from last child*/
   border-color:  #94a0b4;
 }
 
+.navbar-brand img {
+  height: 8rem;
+  /*position: fixed;*/
+  position: relative;
+  margin-left: 60px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.feature .fas, .fab {
+  color: #E74C3C;
+  padding-bottom: 1rem;
+}
+.feature h3{
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  padding-bottom: .4rem;
+}
+
+.feature p {
+  font-size: 1.1rem;
+}
+
+
+/*Estilo panel izquierdo y panel central*/
 .sidenav {
   height: 100%;
-  width: 160px;
+  width: 250px;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -124,7 +149,7 @@ right connector from last child*/
 }
 
 .dash-section {
-  margin-left: 160px;
+  margin-left: 250px;
   font-size: 28px;
   padding: 70px 20px;
 }
