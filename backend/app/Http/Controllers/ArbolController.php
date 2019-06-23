@@ -55,6 +55,12 @@ class ArbolController extends Controller
         if ($validator->fails()) {
             return response()->json(['errors'=>$validator->errors()->all()], 422);
         }
+
+        // Se crea el arbol
+        $arbol = new \App\Arbol();
+        $arbol->nombre = $request->nombre;
+        $arbol->save();
+
         //Se retorna un mensaje de exito en toda la operación
         return response()->json(['msg'=> 'Arbol creado con exito'], 201);
     }
