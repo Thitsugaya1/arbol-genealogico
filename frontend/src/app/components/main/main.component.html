@@ -18,15 +18,17 @@
     <div class="col-md-5 col-sm-4 col-xs-12">
       <div class="card">
         <div class="card-body">
-          <form >
+          <form #formLogin="ngForm" (ngSubmit)="onLogin()">
             <div class="form-group">
               <h4> Iniciar sesión</h4> <!-- Título de inicio de sesión -->
               <label class="sr-only" for="exampleInputEmail3">Email</label> <!-- Se crea un label para ingresar el correo del usuario -->
-              <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email(Ej: alan.turing@live.cl)">
+              <input type="email" class="form-control" id="exampleInputEmail3"
+                     placeholder="Email(Ej: alan.turing@live.cl)" [(ngModel)]="user.correo" name="correo" required>
             </div>
             <div class="form-group">
               <label class="sr-only" for="exampleInputPassword3">Contraseña</label>  <!-- Se crea un label para ingresar la contraseña del usuario -->
-              <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Contraseña">
+              <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Contraseña"
+                     [(ngModel)]="user.contrasena" name="contrasena" required>
             </div>
             <div class="checkbox">
               <label>
@@ -35,7 +37,8 @@
             </div>
 
             <div class="custom-box">
-              <a href="dashboard" class="btn btn-outline-light btn-lg"> Ingresar</a>  <!-- Se crea el botón de ingresar a la cuenta del usuario -->
+              <button class="btn btn-outline-light btn-lg" type="submit">Ingresar</button>  <!-- Se crea el botón de
+              ingresar a la cuenta del usuario -->
               <p> o bien </p>
               <a  href="#sectionc" class="btn btn-outline-light btn-lg"> Regístrate</a> <!-- Se crea el boton registrate -->
             </div>

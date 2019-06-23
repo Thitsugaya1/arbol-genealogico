@@ -31,6 +31,18 @@ export class MainComponent implements OnInit {
       }
     );
   }
+  onLogin() {
+    return this.authService.loginUser(
+      this.user.correo,
+      this.user.contrasena,
+    ).subscribe(
+      data => {
+        console.log(data);
+      },
+      error => console.log(error)
+    );
+  }
+
   ngOnInit() {
   }
 
