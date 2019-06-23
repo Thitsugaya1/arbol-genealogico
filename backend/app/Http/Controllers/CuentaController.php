@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
+/**
+     * Metodo para registrar un nuevo usuario.
+     * @author Rodrigo Cordero, Bastian Sepulveda
+     */
 class CuentaController extends Controller
 {
     //Metodo que permite el almacenaje de los datos de una nueva cuenta a registrar

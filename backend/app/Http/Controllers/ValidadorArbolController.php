@@ -9,40 +9,38 @@ class ValidadorArbolController extends Controller
 {
     public function validarAtributosDelArbol(Request $request)
     {
+        
         //Exige el paso de estas variables desde el front-end
         $input = $request->only('nombre', 'relaciones');
 
-        //MEMO: Los objetos persona deben ser consultados en la base de datos para ver su existencia
-        //Validador del nombre del arbol
-        $validator = Validator::make($request->all(), [
-            'nombre' => 'required|string|min|min:1|max:255'
-        ], $mensajes_error_nombre);
+        $mensajes_error = [
+            'nombre.required'=> 'El nombre es obligatorio',
+            'nombre.string'=> 'El nombre debe contener al menos una letra',
+            'nombre.max'=> 'El nombre es demasiado largo',
+            'nombre.min'=> 'El nombre es demasiado corto',
 
-        //Se verifica la existencia de los atributos en el arreglo
-        Assert::that($request->relaciones)->keyExists('persona1');
-        Assert::that($request->relaciones)->keyExists('persona2');
-        Assert::that($request->relaciones)->keyExists('tipoRelacion');
+            'relaciones.*.persona1.exists' => 'La persona 1 no existe en la base de datos',
+            'relaciones.*.persona1.required'=> 'La persona 1 es obligatoria',
 
-        if($user){
-            if (\Hash::check($request->contrasena, $user->contrasena)) {
+            'relaciones.*.persona2.required'=> 'La persona 2 es obligatoria',
+            'relaciones.*.persona2.exists' => 'La persona 2 no existe en la base de datos',
 
-                $validator = Validator::make($request->all(), [
-                    'relaciones->persona1' => 'required',//verificar si existe en la bdd
-                    'relaciones->persona2' => 'required',//verificar si existe en la bdd
-                    'relaciones->tipoRelacion' => 'required',//verificar si existe en la bdd
-                ], $mensajes_error);
-            }
+            'relaciones.*.tipoRelacion.required'=> 'El tipo de relacion entre las personas es obligatoria',
+            'relaciones.*.tipoRelacion.string'=> 'El tipo de relacion debe contener al menos una letra',
+        ];
 
-        for($id = 0; $i < sizeof($request->relaciones); $id++)
-        {
-            $p1 = $request->relaciones->persona1;
-            $p2 = $request->relaciones->persona2;
-            $tRelacion = $request->relaciones->tipoRelacion;
+        //Se valida el ingreso correcto de los atributos 
+        $this->validate($request, [
+            'name' => 'required|string|max:255|min:1',
+            'relaciones.*.persona1' => 'required|string|exists:persona',
+            'relaciones.*.persona2' => 'required|string|exists:persona',
+            'relaciones.*.tipoRelacion' => 'required|string',
+        ], $mensajes_error);
 
-            
-            //ver si la persona existe en la bdd
-            //validar sintaxis de los objetos
-
+        //En caso de una falla en los datos capturados se retorna un codigo de respuesta de error de semantica
+        if ($validator->fails()) {
+            return response()->json(['errors'=>$validator->errors()->all()], 422);
         }
+        return response()->json(['msg'=> 'Datos correctos']);
     }
 }
