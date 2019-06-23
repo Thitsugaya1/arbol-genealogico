@@ -23,6 +23,5 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/user', function(Request $request){
         return auth('api')->user();
     });
-    
+    Route::post('/arbol', 'ArbolController@crearArbol');
 });
-Route::post('/arbol', 'ArbolController@crearArbol');

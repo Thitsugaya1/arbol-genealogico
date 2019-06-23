@@ -13,6 +13,9 @@ class ValidadorArbolController extends Controller
         //Exige el paso de estas variables desde el front-end
         $input = $request->only('nombre', 'relaciones');
 
+        $rel = ['Padre','Madre','Hijo','Hija','Tio','Tia', 'Abuelo','Abuela', 'Hermano', 'Hermana'];
+        
+
         $mensajes_error = [
             'nombre.required'=> 'El nombre es obligatorio',
             'nombre.string'=> 'El nombre debe contener al menos una letra',
