@@ -21,7 +21,7 @@
           <form #formLogin="ngForm" (ngSubmit)="onLogin()">
             <div class="form-group">
               <h4> Iniciar sesión</h4> <!-- Título de inicio de sesión -->
-              <label class="sr-only" for="exampleInputEmail3">Email</label> <!-- Se crea un label para ingresar el correo del usuario -->
+              <label class="sr-only" for="exampleInputEmail3">Email</label> <!-- Se crea un label para ingresar el email del usuario -->
               <input type="email" class="form-control" id="exampleInputEmail3"
                      placeholder="Email(Ej: alan.turing@live.cl)" [(ngModel)]="user.correo" name="correo" required>
             </div>
@@ -36,13 +36,14 @@
               </label>
             </div>
 
-            <div class="custom-box">
-              <button class="btn btn-outline-light btn-lg" type="submit">Ingresar</button>  <!-- Se crea el botón de
-              ingresar a la cuenta del usuario -->
-              <p> o bien </p>
-              <a  href="#sectionc" class="btn btn-outline-light btn-lg"> Regístrate</a> <!-- Se crea el boton registrate -->
+            <div class="custom-box centerbtn">
+              <button class="btn btn-outline-light btn-lg btn-iniciar" type="submit">Ingresar</button>  <!-- Se crea el botón de ingresar a la cuenta del usuario -->
             </div>
-
+            <div class="">
+              <h1> </h1>
+              <a  href="#sectionc" class="letra-color centerbtn" > Regístrate</a> <!-- Se crea el boton registrate -->
+            </div>
+            
           </form>
         </div>
       </div>
@@ -80,7 +81,7 @@
             <i class="fas fa-user-plus fa-4x" data-fa-transform="shrink-4.6 up-4.6"></i>
             <h3>¿Cómo ser parte?</h3> <!-- se crea una etiqueta-->
             <p>Regístrate en nuestra página y podrás crear el árbol de tu familia en sencillos pasos. </p> <!-- Se escribe un parrafo-->
-            <a  href="#sectionc" class="btn btn-secondary btn-md">Regístrate</a>
+            <a  href="#sectionc" class="btn btn-secondary btn-md  ">Regístrate</a>
           </div>
         </div>
 
@@ -157,25 +158,16 @@
 <div class="reg-form-box">
   <div class="reg-form-card col-md-9">
     <form #formRegister="ngForm" (ngSubmit)="onRegister()" >
-      <div class="form-row">
+      <div class="form-row centerbtn">
         <div class="form-group col-md-5">
-          <label for="inputEmail4">Email</label>
-          <input type="text" class="form-control" id="inputEmail4" placeholder="Email"
+          <label for="inputEmail4">Correo</label>
+          <input type="text" class="form-control" id="inputEmail4" placeholder="Correo"
                  [(ngModel)]="user.correo" name="correo" required>
         </div>
         <div class="form-group col-md-4">
           <label for="inputPassword4">Contraseña</label>
           <input type="password" class="form-control" id="inputPassword4" placeholder="Contraseña"
                  [(ngModel)]="user.contrasena" name="contrasena" required>
-        </div>
-        <div class="form-group col-md-3">
-          <label for="inputState">Sexo</label>
-          <select id="inputState" class="form-control">
-            <option selected>Selecciona tu sexo</option>
-            <option>Masculino</option>
-            <option>Femenino</option>
-            <option>Otro</option>
-          </select>
         </div>
       </div>
 
