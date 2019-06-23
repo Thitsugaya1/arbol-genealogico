@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
+/**
+     * Metodo para registrar un nuevo usuario.
+     * @author Rodrigo Cordero, Bastian Sepulveda
+     */
 class CuentaController extends Controller
 {
     //Metodo que permite el almacenaje de los datos de una nueva cuenta a registrar
@@ -26,7 +30,6 @@ class CuentaController extends Controller
             'correo.max'=> 'El correo es demasiado largo',
             'correo.min'=> 'El correo es demasiado corto',
             'correo.unique'=> 'El correo ya esta en uso',
-            'correo.regex'=> 'El correo debe empezar con una letra',//no funca
 
             'ap_paterno.required'=> 'El apellido paterno es obligatorio',
             'ap_paterno.string'=> 'El apellido paterno debe contener al menos una letra',
@@ -86,7 +89,6 @@ class CuentaController extends Controller
             'correo.email'=> 'El correo no sigue el formato @dominio.tld',
             'correo.max'=> 'El correo es demasiado largo',
             'correo.min'=> 'El correo es demasiado corto',
-            'correo.regex'=> 'El correo debe empezar con una letra',//no funca
             'contrasena.required'=> 'La contraseña es obligatoria'
         ];
 
