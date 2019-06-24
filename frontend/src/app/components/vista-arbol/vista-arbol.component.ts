@@ -1,11 +1,11 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css'],
+  selector: 'app-vista-arbol',
+  templateUrl: './vista-arbol.component.html',
+  styleUrls: ['./vista-arbol.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class VistaArbolComponent implements OnInit {
 
   constructor() { }
 
