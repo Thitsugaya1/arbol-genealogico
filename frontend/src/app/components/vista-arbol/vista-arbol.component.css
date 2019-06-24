@@ -1,4 +1,3 @@
-/*Now the CSS*/
 * {
   margin: 0;
   padding: 0;
@@ -25,7 +24,7 @@
   -moz-transition: all 0.5s;
 }
 
-/*We will use ::before and ::after to draw the connectors*/
+/*Se usara ::before y ::after para dibujar los conectores*/
 
 .tree li::before, .tree li::after {
   content: '';
@@ -43,24 +42,22 @@
   border-left: 1px solid #ccc;
 }
 
-/*We need to remove left-right connectors from elements without
-any siblings*/
+
+/*Se necesita remover los conectores izquierdos y derechos de los familiares sin ningun hermano*/
 .tree li:only-child::after, .tree li:only-child::before {
   display: none;
 }
 
-/*Remove space from the top of single children*/
 .tree li:only-child {
   padding-top: 0;
 }
 
-/*Remove left connector from first child and
-right connector from last child*/
+/*Removiendo el conector izquierdo del primero hijo y el conector derecho del ultimo*/
 .tree li:first-child::before, .tree li:last-child::after {
   border: 0 none;
 }
 
-/*Adding back the vertical connector to the last nodes*/
+/*Añadiendo el conector verticar a los ultimos nodos*/
 .tree li:last-child::before {
   border-right: 1px solid #ccc;
   border-radius: 0 5px 0 0;
@@ -74,7 +71,7 @@ right connector from last child*/
   -moz-border-radius: 5px 0 0 0;
 }
 
-/*Time to add downward connectors from parents*/
+/*Conectores hacia abajo de los padres*/
 .tree ul ul::before {
   content: '';
   position: absolute;
@@ -103,15 +100,14 @@ right connector from last child*/
   -moz-transition: all 0.5s;
 }
 
-/*Time for some hover effects*/
-/*We will apply the hover effect the the lineage of the element also*/
+/*Efectos de deslizamiento con hover*/
 .tree li a:hover, .tree li a:hover + ul li a {
   background: #c8e4f8;
   color: #000;
   border: 1px solid #94a0b4;
 }
 
-/*Connector styles on hover*/
+/*Estilos de los conectores con hover*/
 .tree li a:hover + ul li::after,
 .tree li a:hover + ul li::before,
 .tree li a:hover + ul::before,
@@ -121,7 +117,6 @@ right connector from last child*/
 
 .navbar-brand img {
   height: 8rem;
-  /*position: fixed;*/
   position: relative;
   margin-left: 60px;
   margin-bottom: 15px;
@@ -158,6 +153,7 @@ right connector from last child*/
   box-shadow: 0px 2px 0px #E74C3C;
 }
 
+/* Estilo del boton al momento de posicionar el puntero encima de este */
 .button:hover {
   background-color: #E74C3C;
   color: #fff;
