@@ -24,4 +24,5 @@ Route::middleware('auth:api')->group(function () {
         return auth('api')->user();
     });
     Route::post('/arbol', 'ArbolController@crearArbol');
+    Route::get('/arbol/vacio', 'ArbolController@enviarArbolVacio');
 });

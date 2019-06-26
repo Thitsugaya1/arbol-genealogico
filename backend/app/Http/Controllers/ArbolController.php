@@ -79,4 +79,14 @@ class ArbolController extends Controller
         return response()->json(['msg'=> 'Arbol creado con exito'], 201);
     }
 
+    //Retorna un arbol con su estructura vacia
+    public function enviarArbolVacio(Request $request)
+    {
+        return response()->json([
+                        'nombre'=> '',
+                        'relaciones'=>[]
+        ], 201);
+    }
+
+    
 }
