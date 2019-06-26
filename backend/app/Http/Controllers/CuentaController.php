@@ -35,10 +35,10 @@ class CuentaController extends Controller
 
             'correo.required'=> 'El correo es obligatorio',
             'correo.string'=> 'El correo debe tener al menos una letra',
-            'correo.email'=> 'El correo no sigue el formato @dominio.tld',
             'correo.max'=> 'El correo es demasiado largo',
             'correo.min'=> 'El correo es demasiado corto',
             'correo.unique'=> 'El correo ya esta en uso',
+            'correo.regex' => 'El correo no sigue el formato @dominio.tld',
 
             'ap_paterno.required'=> 'El apellido paterno es obligatorio',
             'ap_paterno.string'=> 'El apellido paterno debe contener al menos una letra',
@@ -61,7 +61,7 @@ class CuentaController extends Controller
         //En caso de una falla en los datos capturados se retorna un codigo de respuesta de error de semantica
         $validator = Validator::make($request->all(), [
             'nombre' => 'required|string|max:255|min:2|regex:/^[a-zA-Z\s]*$/',
-            'correo' => array('required','string','email','max:255','min:8','unique:usuarios'),
+            'correo' => array('required','string','max:255','min:8','unique:usuarios', 'regex:/^(?!(?:(?:\x22?\x5C[\x00-\x7E]\x22?)|(?:\x22?[^\x5C\x22]\x22?)){255,})(?!(?:(?:\x22?\x5C[\x00-\x7E]\x22?)|(?:\x22?[^\x5C\x22]\x22?)){65,}@)(?:(?:[\x21\x23-\x27\x2A\x2B\x2D\x2F-\x39\x3D\x3F\x5E-\x7E]+)|(?:\x22(?:[\x01-\x08\x0B\x0C\x0E-\x1F\x21\x23-\x5B\x5D-\x7F]|(?:\x5C[\x00-\x7F]))*\x22))(?:\.(?:(?:[\x21\x23-\x27\x2A\x2B\x2D\x2F-\x39\x3D\x3F\x5E-\x7E]+)|(?:\x22(?:[\x01-\x08\x0B\x0C\x0E-\x1F\x21\x23-\x5B\x5D-\x7F]|(?:\x5C[\x00-\x7F]))*\x22)))*@(?:(?:(?!.*[^.]{64,})(?:(?:(?:xn--)?[a-z0-9]+(?:-[a-z0-9]+)*\.){1,126}){1,}(?:(?:[a-z][a-z0-9]*)|(?:(?:xn--)[a-z0-9]+))(?:-[a-z0-9]+)*)|(?:\[(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){7})|(?:(?!(?:.*[a-f0-9][:\]]){7,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?)))|(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){5}:)|(?:(?!(?:.*[a-f0-9]:){5,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3}:)?)))?(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))(?:\.(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))){3}))\]))$/iD'),
             'ap_paterno' => 'required|string|max:255|min:2|regex:/^[a-zA-Z\s]*$/',
             'ap_materno' => 'required|string|max:255|min:2|regex:/^[a-zA-Z\s]*$/',
             'contrasena' => 'required|string|max:255|min:4',
@@ -97,14 +97,14 @@ class CuentaController extends Controller
             'correo.exists' => 'El correo no existe en la base de datos',
             'correo.required'=> 'El correo es obligatorio',
             'correo.string'=> 'El correo debe tener al menos una letra',
-            'correo.email'=> 'El correo no sigue el formato @dominio.tld',
             'correo.max'=> 'El correo es demasiado largo',
             'correo.min'=> 'El correo es demasiado corto',
+            'correo.regex' => 'El correo no sigue el formato @dominio.tld',
             'contrasena.required'=> 'La contraseña es obligatoria'
         ];
 
         $validator = Validator::make($request->all(), [
-            'correo' => 'required|string|max:255|exists:usuarios',
+            'correo' => 'required|string|max:255|exists:usuarios|regex:/^(?!(?:(?:\x22?\x5C[\x00-\x7E]\x22?)|(?:\x22?[^\x5C\x22]\x22?)){255,})(?!(?:(?:\x22?\x5C[\x00-\x7E]\x22?)|(?:\x22?[^\x5C\x22]\x22?)){65,}@)(?:(?:[\x21\x23-\x27\x2A\x2B\x2D\x2F-\x39\x3D\x3F\x5E-\x7E]+)|(?:\x22(?:[\x01-\x08\x0B\x0C\x0E-\x1F\x21\x23-\x5B\x5D-\x7F]|(?:\x5C[\x00-\x7F]))*\x22))(?:\.(?:(?:[\x21\x23-\x27\x2A\x2B\x2D\x2F-\x39\x3D\x3F\x5E-\x7E]+)|(?:\x22(?:[\x01-\x08\x0B\x0C\x0E-\x1F\x21\x23-\x5B\x5D-\x7F]|(?:\x5C[\x00-\x7F]))*\x22)))*@(?:(?:(?!.*[^.]{64,})(?:(?:(?:xn--)?[a-z0-9]+(?:-[a-z0-9]+)*\.){1,126}){1,}(?:(?:[a-z][a-z0-9]*)|(?:(?:xn--)[a-z0-9]+))(?:-[a-z0-9]+)*)|(?:\[(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){7})|(?:(?!(?:.*[a-f0-9][:\]]){7,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?)))|(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){5}:)|(?:(?!(?:.*[a-f0-9]:){5,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3}:)?)))?(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))(?:\.(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))){3}))\]))$/iD',
             'contrasena' => 'required|string|max:255',
         ], $mensajes_error);
 
