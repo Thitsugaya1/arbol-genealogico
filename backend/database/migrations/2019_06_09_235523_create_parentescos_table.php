@@ -18,13 +18,13 @@ class CreateParentescosTable extends Migration
             $table->string('relacion');
             $table->bigInteger('ref_persona');
             $table->bigInteger('ref_persona2');
-            $table->bigInteger('ref_parentesco');
+            $table->bigInteger('ref_arbol');
             $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('ref_persona')->references('id')->on('personas');
             $table->foreign('ref_persona2')->references('id')->on('personas');
-            $table->foreign('ref_parentesco')->references('id')->on('parentescos');
+            $table->foreign('ref_arbol')->references('id')->on('arbols');
         });
     }
 
