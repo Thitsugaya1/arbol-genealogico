@@ -11,6 +11,15 @@ use Illuminate\Support\Facades\Validator;
      */
 class CuentaController extends Controller
 {
+    /**
+     * Constructor del controlador
+     * Se deja el timezone de Santiago
+     */
+    public function __construct()
+    {
+        date_default_timezone_set('America/Santiago');
+    }
+
     //Metodo que permite el almacenaje de los datos de una nueva cuenta a registrar
     public function nuevoUsuario(Request $request)
     {
@@ -35,11 +44,13 @@ class CuentaController extends Controller
             'ap_paterno.string'=> 'El apellido paterno debe contener al menos una letra',
             'ap_paterno.max'=> 'El apellido paterno es demasiado largo',
             'ap_paterno.min'=> 'El apellido paterno es demasiado corto',
+            'ap_paterno.regex' => 'El apellido paterno no cumple con el formato',
 
             'ap_materno.required'=> 'El apellido materno es obligatorio',
             'ap_materno.string'=> 'El apellido materno debe contener al menos una letra',
             'ap_materno.max'=> 'El apellido materno es demasiado largo',
             'ap_materno.min'=> 'El apellido materno es demasiado corto',
+            'ap_materno.regex' => 'El apellido materno no cumple con el formato',
 
             'contrasena.required'=> 'El contraseña es obligatoria',
             'contrasena.string'=> 'La contraseña debe contener al menos una letra',
@@ -49,10 +60,10 @@ class CuentaController extends Controller
         //Verifica el buen ingreso de datos en los campos requeridos
         //En caso de una falla en los datos capturados se retorna un codigo de respuesta de error de semantica
         $validator = Validator::make($request->all(), [
-            'nombre' => 'required|string|max:255|min:2|regex:/(^([a-zA-Z]+)?$)/u',
+            'nombre' => 'required|string|max:255|min:2|regex:/^[a-zA-Z\s]*$/',
             'correo' => array('required','string','email','max:255','min:8','unique:usuarios'),
-            'ap_paterno' => 'required|string|max:255|min:2|regex:/(^([a-zA-Z]+)?$)/u',
-            'ap_materno' => 'required|string|max:255|min:2|regex:/(^([a-zA-Z]+)?$)/u',
+            'ap_paterno' => 'required|string|max:255|min:2|regex:/^[a-zA-Z\s]*$/',
+            'ap_materno' => 'required|string|max:255|min:2|regex:/^[a-zA-Z\s]*$/',
             'contrasena' => 'required|string|max:255|min:4',
         ], $mensajes_error);
         //En caso de una falla en los datos capturados se retorna un codigo de respuesta de error de semantica
