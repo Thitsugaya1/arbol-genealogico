@@ -50,12 +50,27 @@
 <div class="tree" >
   <span [innerHTML] = "padre()"></span>
   <br>
+  
+  <ul>
+    <li *ngFor="let item of lista">
+      <a>{{item.nombre}}</a>
+     
+      <ul *ngIf = "item.hijo.length>0">
+        <li>
+         <app-boton [h]=item.hijo largo={{item.hijo.length}}></app-boton>
+        </li>
+      </ul>
+    </li>
+  
+</ul>
+
+
  <ul>
     <li>
-      <a>pedrito</a>
+      <button><a>pedrito</a></button>
               <ul>
                 <li>
-                  <a>juanito</a>
+                  <button><a>pedrito</a></button>
                 </li>
               </ul>
     </li>  

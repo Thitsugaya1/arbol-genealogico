@@ -8,9 +8,12 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 })
 export class VistaArbolComponent implements OnInit {
 
-	lista = [{nombre:"perro",hijo:[{nombre:"delfin"}]},{nombre:"gato",hijo:[]}];
+	lista = [{nombre:"perro",hijo:[{nombre:"delfin",hijo:[{nombre:"tapir",hijo:[{nombre:"cotorra",hijo:[]}]}]}]},
+
+	{nombre:"gato",hijo:[]}];
   constructor() { }
   testeo= '';
+  wtf = '<app-boton></app-boton>';
   boton = '<div><button class="boton">+</button></div>';
   
   ngOnInit() {
@@ -34,11 +37,12 @@ export class VistaArbolComponent implements OnInit {
   }
 
   padre(){
-  	var abc = "<ul><div><button >+</button></div>";
+
+  var abc = "<ul>";
   	
   	for (var i = 0 ; i<this.lista.length;i++ ){
   		
-  		abc = abc + '<li>';
+  		abc = abc + '<li><app-boton></app-boton>';
   		
   		
   		abc = abc + '<a>'+this.lista[i].nombre+'</a>';
