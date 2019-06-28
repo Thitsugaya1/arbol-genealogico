@@ -3,6 +3,11 @@
   padding: 0;
 }
 
+.boto{
+  border-radius: 50%;padding-left: 7px;
+  padding-right: 7px; background-color: #857b26;
+  color: white; font-size: 25px
+}
 
 
 .tree ul {
@@ -53,6 +58,7 @@
 .tree li:only-child {
   padding-top: 0;
 }
+
 
 /*Removiendo el conector izquierdo del primero hijo y el conector derecho del ultimo*/
 .tree li:first-child::before, .tree li:last-child::after {
