@@ -40,6 +40,7 @@ export class MainComponent implements OnInit {
       data => {
         console.log(data);
         const token = data.id;
+        localStorage.setItem("Usuario", data.usuario);
         this.authService.setToken(token);
         this.router.navigate(['dashboard']);
       },

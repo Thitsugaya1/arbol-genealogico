@@ -7,6 +7,8 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
+   usuario = {};
+
   constructor() { }
 
   ngOnInit() {
@@ -26,6 +28,7 @@ export class DashboardComponent implements OnInit {
     a.appendChild(content);
     li.appendChild(a);
     ul.appendChild(li);
+    this.usuario = localStorage.getItem('Usuario');
   }
 
 }
