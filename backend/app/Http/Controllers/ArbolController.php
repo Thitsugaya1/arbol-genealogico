@@ -117,10 +117,37 @@ class ArbolController extends Controller
 
     /**
      * Metodo para modificar un arbol existente.
-     * @author Jesús Moris
+     * @author Jesús Moris, Bastian Sepulveda
      */
     public function modificarArbol(Request $request, $id){
 
+        /**
+         * Comienzo de la validacion de los parametros ingresados
+         */
+        //Exige el paso de estas variables desde el front-end
+        $input = $request->only('nombre');
+
+        //Traduccion al español de posibles errores en el ingreso de datos
+        $mensajes_error = [
+            'nombre.required'=> 'El nombre es obligatorio',
+            'nombre.string'=> 'El nombre debe contener al menos una letra',
+            'nombre.max'=> 'El nombre es demasiado largo',
+            'nombre.min'=> 'El nombre es demasiado corto',
+        ];
+        //Se valida el ingreso correcto de los atributos
+        $validator = Validator::make($request->all(), [
+            'nombre' => 'required|string|max:255|min:2',
+        ], $mensajes_error);
+
+        //En caso de una falla en los datos capturados se retorna un codigo de respuesta de error de semantica
+        if ($validator->fails()) {
+            return response()->json(['errors'=>$validator->errors()->all()], 422);
+        }
+        
+        $arbol = \app\arbol::find($id);
+        $arbol->nombre = $request->nombre;
+        $arbol->save();
+        return response()->json(['msg' => 'Arbol editado con exito.'], 201);
     }
 
     /**
