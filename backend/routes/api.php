@@ -24,4 +24,7 @@ Route::middleware('auth:api')->group(function () {
         return auth('api')->user();
     });
     Route::post('/arbol', 'ArbolController@crearArbol');
+    Route::post('/arbol/{idarbol}', 'ArbolController@crearRelacion');
+    Route::post('/arbol/{idarbol}/nodos', 'PersonaController@nuevaPersona');
+    Route::get('/arbol/{id}', 'ArbolController@obtenerArbol');
 });
