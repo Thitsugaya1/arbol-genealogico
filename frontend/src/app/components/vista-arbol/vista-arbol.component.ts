@@ -1,4 +1,5 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+
 
 @Component({
   selector: 'app-vista-arbol',
@@ -8,22 +9,27 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 })
 export class VistaArbolComponent implements OnInit {
 
-	lista = [{nombres:"perro", ap_paterno:"a", sexo:1, is_vivo:"true", foto:"", hijo:[
-                  {nombres:"el bastardo", ap_paterno:"a", sexo:1, is_vivo:"true", foto:"",hijo:[{nombres:"Anuel AA", ap_paterno:"", sexo:1, is_vivo:"true", foto:"",hijo:[]}]}, {nombres:"Pornlando", ap_paterno:"a", sexo:1, is_vivo:"true", foto:"",hijo:[]}]}];
-  
+  lista = [{
+    nombres: "perro", ap_paterno: "a", sexo: 1, is_vivo: "true", foto: "", hijo: [
+      { nombres: "el bastardo", ap_paterno: "a", sexo: 1, is_vivo: "true", foto: "", hijo: [{ nombres: "Anuel AA", ap_paterno: "", sexo: 1, is_vivo: "true", foto: "", hijo: [] }] }, { nombres: "Pornlando", ap_paterno: "a", sexo: 1, is_vivo: "true", foto: "", hijo: [] }]
+  }];
 
-  
+
+
+
   constructor() { }
-  testeo= '';
+
+
+  testeo = '';
   wtf = '<app-boton></app-boton>';
   boton = '<div><button class="boton">+</button></div>';
-  
+
   ngOnInit() {
-  console.log(this.lista);
+    console.log(this.lista);
     var ul = document.getElementById("ul-nav");
     var items = ul.getElementsByTagName("li");
     var aux;
-    for(var i=0; i<items.length; i++){
+    for (var i = 0; i < items.length; i++) {
       aux = items[i];
       aux.setAttribute("class", "invisible");
     }
@@ -38,45 +44,45 @@ export class VistaArbolComponent implements OnInit {
     ul.appendChild(li);
   }
 
-  padre(){
+  padre() {
 
-  var abc = "<ul>";
-  	
-  	for (var i = 0 ; i<this.lista.length;i++ ){
-  		
-  		abc = abc + '<li><app-boton></app-boton>';
-  		
-  		
-  		abc = abc + '<a>'+this.lista[i].nombres+'</a>';
+    var abc = "<ul>";
 
-  		if (this.lista[i].hijo.length > 0){
-  			abc = abc + this.hijo(this.lista[i].hijo[0].nombres);
-  		}
-  		
-  		abc = abc + '</li>';
-  		
-  	}
-  	abc = abc + this.hermano('tapir');
+    for (var i = 0; i < this.lista.length; i++) {
 
-  	this.testeo = abc+'</ul>';
-  	console.log(this.testeo);
-  	return this.testeo ;
+      abc = abc + '<li><app-boton></app-boton>';
+
+
+      abc = abc + '<a>' + this.lista[i].nombres + '</a>';
+
+      if (this.lista[i].hijo.length > 0) {
+        abc = abc + this.hijo(this.lista[i].hijo[0].nombres);
+      }
+
+      abc = abc + '</li>';
+
+    }
+    abc = abc + this.hermano('tapir');
+
+    this.testeo = abc + '</ul>';
+    console.log(this.testeo);
+    return this.testeo;
   }
 
-  hermano(nombre){
-  	var abcd = '';
-	    abcd = '<li>';
-		abcd = abcd + '<a>'+nombre+'</a>';
-		abcd = abcd + '</li>';
-		return abcd;
+  hermano(nombre) {
+    var abcd = '';
+    abcd = '<li>';
+    abcd = abcd + '<a>' + nombre + '</a>';
+    abcd = abcd + '</li>';
+    return abcd;
   }
-  hijo(nombre){
-  	var abcd = '';
-	    abcd = '<ul><li>';
-		abcd = abcd + '<a>'+nombre+'</a>';
-		
-		abcd = abcd + '</li></ul>';
-		return abcd;
+  hijo(nombre) {
+    var abcd = '';
+    abcd = '<ul><li>';
+    abcd = abcd + '<a>' + nombre + '</a>';
+
+    abcd = abcd + '</li></ul>';
+    return abcd;
   }
 
 

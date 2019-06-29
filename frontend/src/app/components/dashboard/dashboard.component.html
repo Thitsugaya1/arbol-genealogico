@@ -1,20 +1,30 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta name="dashboard" content="width=device-width, initial-scale=1">
-</head>
-<body>
-
 <div class="sidenav">
-  <a href="#vaciar">Vaciar árbol</a>
-  <a href="#copiar">Copiar árbol</a>
-  <a href="#exportar">Exportar árbol</a>
+    <a href="#vaciar">Vaciar árbol</a>
+    <a href="#copiar">Copiar árbol</a>
+    <a href="#exportar">Exportar árbol</a>
 </div>
 
 <div class="dash-section">
-  <h2>Dashboard</h2>
-  <p>-Aquí se muestra el árbol genealógico del usuario-</p>
+    <br>
+    <br>
+    <div class="tree">
+        <br>
+        <ul>
+            <!--Se va creando el arbol de manera recursiva-->
+            <li *ngFor="let item of lista">
+                <div><button class="boto" title="Agregar padre/madre" data-toggle="tooltip">+</button></div>
+                <button class="boto" title="Agregar hermano(a)/pareja" data-toggle="tooltip">+</button><a>{{item.nombres}}</a><button class="boto" title="Agregar hermano(a)/pareja" data-toggle="tooltip">+</button>
+                <ul *ngIf="item.hijo.length>0; else loggedOut">
+                    <app-boton [h]=item.hijo largo={{item.hijo.length}}></app-boton>
+                </ul>
+            </li>
+        </ul>
+        <ng-template #loggedOut>
+            <div><button class="boto">+</button></div>
+        </ng-template>
+    </div>
 </div>
-   
-</body>
-</html> 
+
+</html>
