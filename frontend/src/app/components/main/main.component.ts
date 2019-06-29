@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {UserInterface} from '../../models/user-interface';
 import {Router} from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-main',
@@ -10,7 +11,7 @@ import {Router} from '@angular/router';
 })
 export class MainComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private toastr: ToastrService) { }
   private user: UserInterface = {
     correo: '',
     nombre: '',
@@ -20,7 +21,7 @@ export class MainComponent implements OnInit {
   };
 
   onRegister(): void {
-    this.authService.registerUser(
+      this.authService.registerUser(
       this.user.correo,
       this.user.nombre,
       this.user.ap_paterno,
@@ -29,11 +30,16 @@ export class MainComponent implements OnInit {
     ).subscribe(
       user => {
         console.log(user);
+        this.toastr.success('Usuario guardado con éxito'); //se muestra notificación con mensaje de confirmación
+      },
+      error => {
+        console.log(error);
+        this.toastr.error('No se pudo registrar el usuario'); //se muestra notificación con mensaje de error
       }
     );
   }
   onLogin() {
-    return this.authService.loginUser(
+      return this.authService.loginUser(
       this.user.correo,
       this.user.contrasena,
     ).subscribe(
@@ -44,7 +50,10 @@ export class MainComponent implements OnInit {
         this.authService.setToken(token);
         this.router.navigate(['dashboard']);
       },
-      error => console.log(error)
+      error => {
+        this.toastr.error('No se encontraron los datos ingresados'); //se muestra notificación de error
+        console.log(error);
+      }
     );
   }
 
