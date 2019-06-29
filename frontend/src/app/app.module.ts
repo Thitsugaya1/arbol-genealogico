@@ -10,13 +10,12 @@ import { AboutComponent } from './components/about/about.component';
 import { DataApiService } from './services/data-api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-<<<<<<< HEAD
+
 import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.component';
-=======
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
->>>>>>> origin/Navarro
 
 @NgModule({
   declarations: [
