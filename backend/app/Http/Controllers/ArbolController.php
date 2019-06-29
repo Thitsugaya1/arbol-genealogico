@@ -123,7 +123,10 @@ class ArbolController extends Controller
 
     }
 
-    //Retorna un arbol con su estructura vacia
+    /**
+     * Retorna un arbol con su estructura vacia.
+     * @author Rodrigo Cordero
+     */
     public function enviarArbolVacio(Request $request)
     {
         return response()->json([
@@ -131,6 +134,4 @@ class ArbolController extends Controller
                         'relaciones'=>[]
         ], 201);
     }
-
-    
 }
