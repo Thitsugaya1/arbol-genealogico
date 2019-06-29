@@ -8,9 +8,11 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 })
 export class VistaArbolComponent implements OnInit {
 
-	lista = [{nombre:"perro",hijo:[{nombre:"delfin",hijo:[{nombre:"tapir",hijo:[{nombre:"cotorra",hijo:[]}]}]}]},
+	lista = [{nombres:"perro", ap_paterno:"a", sexo:1, is_vivo:"true", foto:"", hijo:[
+                  {nombres:"el bastardo", ap_paterno:"a", sexo:1, is_vivo:"true", foto:"",hijo:[{nombres:"Anuel AA", ap_paterno:"", sexo:1, is_vivo:"true", foto:"",hijo:[]}]}, {nombres:"Pornlando", ap_paterno:"a", sexo:1, is_vivo:"true", foto:"",hijo:[]}]}];
+  
 
-	{nombre:"gato",hijo:[]}];
+  
   constructor() { }
   testeo= '';
   wtf = '<app-boton></app-boton>';

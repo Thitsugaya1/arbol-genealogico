@@ -48,46 +48,26 @@
   <br>
   <br>
 <div class="tree" >
-  <span [innerHTML] = "padre()"></span>
   <br>
   
   <ul>
+
     <li *ngFor="let item of lista">
-      <a>{{item.nombre}}</a>
-     
-      <ul *ngIf = "item.hijo.length>0">
-        <li>
+      <div><button class="boto">+</button></div>
+      <button class="boto">+</button><a>{{item.nombres}}</a><button class="boto">+</button>
+      
+       <ul *ngIf = "item.hijo.length>0; else loggedOut">
+        
          <app-boton [h]=item.hijo largo={{item.hijo.length}}></app-boton>
-        </li>
+          
       </ul>
+     
     </li>
   
 </ul>
-
-
- <ul>
-    <li>
-      <button><a>pedrito</a></button>
-              <ul>
-                <li>
-                  <button><a>pedrito</a></button>
-                </li>
-              </ul>
-    </li>  
-    <li>
-      <a>pedrito</a>
-              <ul>
-                <li>
-                  <a>juanito</a>
-                  <div><button class="boto">+</button></div>
-                </li>
-              </ul>
-    </li>   
-
-        
-    
-  </ul>
-<!-- 
+<ng-template #loggedOut><div><button class="boto">+</button></div></ng-template>
+<!--<div><button class="boto">+</button></div>
+ 
   <ul>
     <li>
       <div ><button style="">+</button></div>
