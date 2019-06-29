@@ -144,7 +144,7 @@ class ArbolController extends Controller
             return response()->json(['errors'=>$validator->errors()->all()], 422);
         }
         
-        $arbol = \app\arbol::find($id);
+        $arbol = \App\arbol::find($id);
         $arbol->nombre = $request->nombre;
         $arbol->save();
         return response()->json(['msg' => 'Arbol editado con exito.'], 201);
