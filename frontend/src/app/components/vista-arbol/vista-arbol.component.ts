@@ -47,10 +47,10 @@ export class VistaArbolComponent implements OnInit {
   		abc = abc + '<li><app-boton></app-boton>';
   		
   		
-  		abc = abc + '<a>'+this.lista[i].nombre+'</a>';
+  		abc = abc + '<a>'+this.lista[i].nombres+'</a>';
 
   		if (this.lista[i].hijo.length > 0){
-  			abc = abc + this.hijo(this.lista[i].hijo[0].nombre);
+  			abc = abc + this.hijo(this.lista[i].hijo[0].nombres);
   		}
   		
   		abc = abc + '</li>';
