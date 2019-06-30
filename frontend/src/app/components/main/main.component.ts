@@ -30,7 +30,7 @@ export class MainComponent implements OnInit {
     ).subscribe(
       user => {
         console.log(user);
-        this.toastr.success('Usuario guardado con éxito'); //se muestra notificación con mensaje de confirmación
+        this.toastr.success('Felicidades ¡Ya tienes una cuenta!'); //se muestra notificación con mensaje de confirmación
       },
       error => {
         console.log(error);
@@ -46,12 +46,12 @@ export class MainComponent implements OnInit {
       data => {
         console.log(data);
         const token = data.id;
-        localStorage.setItem("Usuario", data.usuario);
+        this.authService.setUser(data.usuario);
         this.authService.setToken(token);
         this.router.navigate(['dashboard']);
       },
       error => {
-        this.toastr.error('No se encontraron los datos ingresados'); //se muestra notificación de error
+        this.toastr.error('Email o contraseña incorrectas'); //se muestra notificación de error
         console.log(error);
       }
     );

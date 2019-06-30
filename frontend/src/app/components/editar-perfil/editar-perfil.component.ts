@@ -1,14 +1,27 @@
 import { Component, OnInit } from '@angular/core';
+import {UserInterface} from 'src/app/models/user-interface';
+import {AuthService} from '../../services/auth.service';
+
 @Component({
   selector: 'app-editar-perfil',
   templateUrl: './editar-perfil.component.html',
   styleUrls: ['./editar-perfil.component.css']
 })
 export class EditarPerfilComponent implements OnInit {
-  usuario = {};
-  constructor() { }
+  constructor(private authService: AuthService) { }
+
+  private usuario: UserInterface = {
+    correo: '',
+    nombre: '',
+    ap_paterno: '',
+    ap_materno: '',
+    contrasena: ''
+  };
 
   ngOnInit() {
+    this.usuario = this.authService.getCurrentUser();
+    console.log(this.usuario);
+    
     var ul = document.getElementById("ul-nav");
     var items = ul.getElementsByTagName("li");
     var aux;
@@ -25,7 +38,6 @@ export class EditarPerfilComponent implements OnInit {
     a.appendChild(content);
     li.appendChild(a);
     ul.appendChild(li);
-    this.usuario = localStorage.getItem('Usuario');
   }
 
   onUpload(e){
