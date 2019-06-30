@@ -143,6 +143,11 @@ class ArbolController extends Controller
         if ($validator->fails()) {
             return response()->json(['errors'=>$validator->errors()->all()], 422);
         }
+
+        if(\App\arbol::find($id)==null)
+        {
+            return response()->json(['error' => 'El arbol seleccionado no existe']);
+        }
         
         $arbol = \App\arbol::find($id);
         $arbol->nombre = $request->nombre;
