@@ -48,7 +48,7 @@ export class AuthService {
   }
 
   getCurrentUser(): UserInterface {
-    const userString = localStorage.getItem("currenUser");
+    const userString = localStorage.getItem("currentUser");
     if (!isNullOrUndefined(userString)) {
 
       return JSON.parse(userString.toString());

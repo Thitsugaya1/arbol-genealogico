@@ -3,6 +3,7 @@ import {AuthService} from '../../services/auth.service';
 import {UserInterface} from '../../models/user-interface';
 import {Router} from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { isNullOrUndefined } from 'util';
 
 @Component({
   selector: 'app-main',
@@ -30,11 +31,22 @@ export class MainComponent implements OnInit {
     ).subscribe(
       user => {
         console.log(user);
-        this.toastr.success('Felicidades ¡Ya tienes una cuenta!'); //se muestra notificación con mensaje de confirmación
+        window.scrollTo(0,0);
+        this.toastr.success('Felicidades ¡Ya tienes una cuenta!\nahora puedes iniciar sesión'); //se muestra
+        // notificación con mensaje de
+        // confirmación
       },
       error => {
-        console.log(error);
-        this.toastr.error('No se pudo registrar el usuario'); //se muestra notificación con mensaje de error
+        var aux = error["error"];
+        let errors = aux["errors"];
+        if(isNullOrUndefined(errors)){
+          errors = aux["msg"];
+          this.toastr.error(errors);
+        }else{
+          for(let e of errors){
+            this.toastr.error(e); //se muestra notificación con mensaje de error
+          }
+        }
       }
     );
   }
@@ -51,8 +63,17 @@ export class MainComponent implements OnInit {
         this.router.navigate(['dashboard']);
       },
       error => {
-        this.toastr.error('Email o contraseña incorrectas'); //se muestra notificación de error
-        console.log(error);
+        let aux = error["error"];
+        let errors = aux["errors"];
+        if(isNullOrUndefined(errors)){
+          errors = aux["msg"];
+          this.toastr.error(errors);
+        }else{
+          for(let e of errors){
+            this.toastr.error(e); //se muestra notificación con mensaje de error
+          }
+        }
+        // console.log(errors);
       }
     );
   }

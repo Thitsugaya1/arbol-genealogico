@@ -35,6 +35,7 @@ export class EditarPerfilComponent implements OnInit {
     li.className = "nav-item";
     a.className = "nav-link";
     a.href = "#home";
+    a.addEventListener("click", (e: Event) => this.authService.logoutUser());
     a.appendChild(content);
     li.appendChild(a);
     ul.appendChild(li);
