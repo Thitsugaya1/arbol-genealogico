@@ -26,7 +26,7 @@ import { ToastrModule } from 'ngx-toastr';
     MainComponent,
     DashboardComponent,
     AboutComponent,
-    EditarPerfilComponent
+    EditarPerfilComponent,
     VistaArbolComponent,
     BotonComponent
   ],
