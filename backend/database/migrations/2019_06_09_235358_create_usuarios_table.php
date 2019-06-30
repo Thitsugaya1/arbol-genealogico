@@ -19,7 +19,7 @@ class CreateUsuariosTable extends Migration
 			$table->string('nombres', 32);
 			$table->string('ap_paterno');
 			$table->string('ap_materno');
-			$table->string('contrasena', 16);
+			$table->string('contrasena', 255);
 			$table->string('foto');
 			$table->softDeletes();
             $table->timestamps();

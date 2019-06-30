@@ -3,53 +3,73 @@
 
 <div class="sidenav">
 
-  <div style="position: static">
-    <!-- Se crea seccion donde esta el icono del usuario y los datos-->
-    <div class="col-12"><i class="navbar-brand">
+    <div style="position: static">
+        <!-- Se crea seccion donde esta el icono del usuario y los datos-->
+        <div class="col-12"><i class="navbar-brand">
       <div><img src="../../../assets/usuario.png"></div>
     </i></div>
-    <div style="position: static">
-      <h5
-        style="color: white; border-bottom-style: solid; border-width: .10em;text-align: center;border-color: white; border-top-style: solid">
-        Datos personales</h5>
-      <h6 style="color: white; padding-left: 10px; padding-top: 50px">Nombre: </h6>
-      <h6 style="color: white; padding-left: 10px; padding-top: 10px">Apellido paterno: </h6>
-      <h6 style="color: white; padding-left: 10px; padding-top: 10px">Apellido materno: </h6>
-      <h6 style="color: white; padding-left: 10px; padding-top: 10px">Año de nacimiento: </h6>
+        <div style="position: static">
+            <h5 style="color: white; border-bottom-style: solid; border-width: .10em;text-align: center;border-color: white; border-top-style: solid">
+                Datos personales</h5>
+            <h6 style="color: white; padding-left: 10px; padding-top: 50px">Nombre: </h6>
+            <h6 style="color: white; padding-left: 10px; padding-top: 10px">Apellido paterno: </h6>
+            <h6 style="color: white; padding-left: 10px; padding-top: 10px">Apellido materno: </h6>
+            <h6 style="color: white; padding-left: 10px; padding-top: 10px">Año de nacimiento: </h6>
+
+        </div>
+
+        <div>
+            <h5 style="color: white; border-bottom-style: solid; border-width: .10em; border-color: white; padding-top: 50px"></h5>
+
+
+        </div>
+
+        <div class="row text-center" style="margin-top: 60px">
+
+            <!-- Seccion que posee los íconos de editar y eliminar-->
+            <div class="col-6">
+                <a class="button" style="font-size: 15px;margin: 2px" title="borrar">
+                    <div><img style="height: 2rem" src="../../../assets/delete.png"></div>
+                    eliminar</a>
+            </div>
+
+            <div class="col-6">
+                <a class="button" style="font-size: 15px;margin: 2px" title="editar">
+                    <div><img style="height: 2rem" src="../../../assets/edit.png"></div>
+                    editar</a>
+            </div>
+
+
+        </div>
+
 
     </div>
-
-    <div>
-      <h5
-        style="color: white; border-bottom-style: solid; border-width: .10em; border-color: white; padding-top: 50px"></h5>
-
-
-    </div>
-
-    <div class="row text-center" style="margin-top: 60px">
-
-      <!-- Seccion que posee los íconos de editar y eliminar-->
-      <div class="col-6"><a class="button" style="font-size: 15px;margin: 2px" title="borrar">
-        <div><img style="height: 2rem" src="../../../assets/delete.png"></div>
-        eliminar</a></div>
-
-      <div class="col-6"><a class="button" style="font-size: 15px;margin: 2px" title="editar">
-        <div><img style="height: 2rem" src="../../../assets/edit.png"></div>
-        editar</a></div>
-
-
-    </div>
-
-
-  </div>
 </div>
 
 <div class="dash-section">
-<div class="tree" >
+    <br>
+    <br>
+    <div class="tree">
+        <br>
+        <ul>
+            <li *ngFor="let item of lista">
+                <div><button class="boto" title="Agregar padre/madre" data-toggle="tooltip">+</button></div>
+                <button class="boto" title="Agregar hermano(a)/pareja" data-toggle="tooltip">+</button><a>{{item.nombres}}</a><button class="boto" title="Agregar hermano(a)/pareja" data-toggle="tooltip">+</button>
+                <ul *ngIf="item.hijo.length>0; else loggedOut">
+                    <app-boton [h]=item.hijo largo={{item.hijo.length}}></app-boton>
+                </ul>
+            </li>
+        </ul>
+        <ng-template #loggedOut>
+            <div><button class="boto">+</button></div>
+        </ng-template>
 
+        <button class="boto" mat-raised-button (click)="openDialog()" title="Agregar padre/madre" data-toggle="tooltip">+</button>
+        <!--<div><button class="boto">+</button></div>
+ 
   <ul>
     <li>
-      <div ><button style="border-radius: 50%;padding-left: 7px; padding-right: 7px; background-color: #857b26; color: white; font-size: 25px">+</button></div>
+      <div ><button style="">+</button></div>
       <a href="#">Juan</a>
       <ul>
         <li>
@@ -57,9 +77,8 @@
           <ul>
             <li>
 
-                <div>
                     <a href="#">Luis</a>
-               </div>
+               
                <div ><button style="border-radius: 50%;padding-left: 7px; padding-right: 7px; background-color: #857b26; color: white;
                 font-size: 25px">+</button></div>
 
@@ -99,7 +118,8 @@
         </li>
       </ul>
     </li>
-  </ul>
+  </ul>-->
+    </div>
 </div>
-</div>
+
 </html>

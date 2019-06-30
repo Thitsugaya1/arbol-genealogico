@@ -10,7 +10,9 @@ import { AboutComponent } from './components/about/about.component';
 import { DataApiService } from './services/data-api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import {VistaArbolComponent} from "./components/vista-arbol/vista-arbol.component";
+import { VistaArbolComponent } from "./components/vista-arbol/vista-arbol.component";
+import { BotonComponent } from './components/boton/boton.component';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import {VistaArbolComponent} from "./components/vista-arbol/vista-arbol.componen
     MainComponent,
     DashboardComponent,
     AboutComponent,
-    VistaArbolComponent
+    VistaArbolComponent,
+    BotonComponent
   ],
   imports: [
     BrowserModule,
