@@ -79,7 +79,18 @@ body {
     padding: .6rem 1.3rem;
     font-size: 1.1rem;
 }
-
+.letra-color{
+    text-transform: capitalize;
+    color: #ffffff;
+}
+.btn-iniciar{
+    text-transform: capitalize;
+}
+.centerbtn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 /*----- landing page -----*/
 .home-inner {
     background-image: url(../../../assets/arbol.jpg);
