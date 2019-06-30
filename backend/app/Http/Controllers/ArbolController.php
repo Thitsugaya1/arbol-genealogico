@@ -104,6 +104,62 @@ class ArbolController extends Controller
 
         return response()->json(['msg' => 'Relacion creada con exito']);
     }
+
+    public function eliminarRelacion(Request $request, $idarbol, $idrelacion){
+        if(\App\Arbol::find($idarbol)==null)
+            return response()->json(['errors'   => ['El arbol seleccionado no existe']], 422);
+        if(\App\Parentesco::find($idrelacion)==null)
+            return response()->json(['errors'   => ['El arbol seleccionado no existe']], 422);
+
+        $relacion = \App\Parentesco::find($idrelacion);
+        $relacion->delete();
+
+        return response()->json(['msg' => 'Relacion eliminada con exito']);
+    }
+
+    public function modificarRelacion(Request $request, $idarbol, $idrelacion){
+        if(\App\Arbol::find($idarbol)==null)
+            return response()->json(['errors'   => ['El arbol seleccionado no existe']], 422);
+        if(\App\Parentesco::find($idrelacion)==null)
+            return response()->json(['errors'   => ['El arbol seleccionado no existe']], 422);
+
+        $rel = ['Pareja', 'Padre','Madre','Hijo','Hija','Tio','Tia', 'Abuelo','Abuela', 'Hermano', 'Hermana'];
+        //Exige el paso de estas variables desde el front-end
+        $input = $request->only('persona1', 'persona2', 'tipoRelacion');
+        $mensajes_error = [
+            'persona1.exists' => 'La persona 1 no existe en la base de datos',
+            'persona1.required'=> 'La persona 1 es obligatoria',
+            'persona1.integer'=> 'La persona 1 debe ser entero.',
+
+            'persona2.required'=> 'La persona 2 es obligatoria',
+            'persona2.exists' => 'La persona 2 no existe en la base de datos',
+            'persona2.integer'=> 'La persona 2 debe ser entero.',
+
+            'tipoRelacion.required'=> 'El tipo de relacion entre las personas es obligatoria',
+            'tipoRelacion.string'=> 'El tipo de relacion debe contener al menos una letra',
+            'tipoRelacion.in' => 'La relacion no es valida',
+        ];
+
+        $validator = Validator::make($request->all(), [
+            'persona1' => 'required|integer|exists:personas,id',
+            'persona2' => 'required|integer|exists:personas,id',
+            'tipoRelacion' => ['required', Rule::in($rel)]
+        ], $mensajes_error);
+
+        //En caso de una falla en los datos capturados se retorna un codigo de respuesta de error de semantica
+        if ($validator->fails()) {
+            return response()->json(['errors'=>$validator->errors()->all()], 422);
+        }
+
+        $relacion = \App\Parentesco::find($idrelacion);
+        $relacion->ref_persona = $request->persona1;
+        $relacion->ref_persona2 = $request->persona2;
+        $relacion->relacion = $request->tipoRelacion;
+        $relacion->save();
+
+        return response()->json(['msg' => 'Relacion modificada con exito']);
+    }
+
     /**
      * Metodo para obtener el arbol.
      */
@@ -119,7 +175,9 @@ class ArbolController extends Controller
      * Metodo para modificar un arbol existente.
      * @author Jesús Moris, Bastian Sepulveda
      */
-    public function modificarArbol(Request $request, $id){
+    public function modificarArbol(Request $request, $idarbol){
+        if(\App\Arbol::find($idarbol)==null)
+            return response()->json(['error' => 'El arbol seleccionado no existe']);
 
         /**
          * Comienzo de la validacion de los parametros ingresados
@@ -144,15 +202,10 @@ class ArbolController extends Controller
             return response()->json(['errors'=>$validator->errors()->all()], 422);
         }
 
-        if(\App\arbol::find($id)==null)
-        {
-            return response()->json(['error' => 'El arbol seleccionado no existe']);
-        }
-        
-        $arbol = \App\arbol::find($id);
+        $arbol = \App\Arbol::find($idarbol);
         $arbol->nombre = $request->nombre;
         $arbol->save();
-        return response()->json(['msg' => 'Arbol editado con exito.'], 201);
+        return response()->json(['msg' => 'Arbol editado con exito.'], 200);
     }
 
     /**
@@ -163,7 +216,6 @@ class ArbolController extends Controller
     {
         return response()->json([
                         'nombre'=> '',
-                        'relaciones'=>[]
-        ], 201);
+        ], 200);
     }
 }

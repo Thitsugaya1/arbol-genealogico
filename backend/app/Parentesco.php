@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Parentesco extends Model
 {
+    use SoftDeletes;
     public $hidden = ['ref_persona', 'ref_persona2', 'ref_arbol', 'deleted_at', 'created_at','updated_at'];
     //
     public function arbol(){
