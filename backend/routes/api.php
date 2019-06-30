@@ -23,5 +23,18 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/user', function(Request $request){
         return auth('api')->user();
     });
+    // Arbol
     Route::post('/arbol', 'ArbolController@crearArbol');
+    Route::post('/arbol/{idarbol}', 'ArbolController@modificarArbol');
+    Route::get('/arbol/{id}', 'ArbolController@obtenerArbol');
+    Route::get('/arbol/vacio', 'ArbolController@enviarArbolVacio');
+
+    // Relaciones
+    Route::post('/arbol/{idarbol}/relaciones', 'ArbolController@crearRelacion');
+    Route::post('/arbol/{idarbol}/relaciones/{idrelacion}', 'ArbolController@modificarRelacion');
+    Route::delete('/arbol/{idarbol}/relaciones/{idrelacion}', 'ArbolController@eliminarRelacion');
+
+    // Nodos
+    Route::post('/arbol/{idarbol}/nodos', 'PersonaController@nuevaPersona');
+    Route::post('/arbol/{idarbol}/nodos/{idnodo}', 'PersonaController@editarPersona');
 });
