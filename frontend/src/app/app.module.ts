@@ -24,11 +24,9 @@ import { ToastrModule } from 'ngx-toastr';
     MainComponent,
     DashboardComponent,
     AboutComponent,
-<<<<<<< HEAD
-    VistaArbolComponent
-=======
+    VistaArbolComponent,
     EditarPerfilComponent
->>>>>>> Aliens-Desarrollo
+
   ],
   imports: [
     BrowserModule,
