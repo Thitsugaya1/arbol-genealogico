@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,7 +18,20 @@ export class DashboardComponent implements OnInit {
   boton = '<div><button class="boton">+</button></div>';
 
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
+
+  openDialog(): void {
+    console.log("entró");
+    const dialogRef = this.dialog.open(DialogComponent, {
+      data: {myVar: "My var"}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(result);
+    });
+  }
+
 
   ngOnInit() {
     var ul = document.getElementById("ul-nav");

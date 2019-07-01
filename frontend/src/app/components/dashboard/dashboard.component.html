@@ -14,8 +14,8 @@
         <ul>
             <!--Se va creando el arbol de manera recursiva-->
             <li *ngFor="let item of lista">
-                <div><button class="boto" title="Agregar padre/madre" data-toggle="tooltip">+</button></div>
-                <button class="boto" title="Agregar hermano(a)/pareja" data-toggle="tooltip">+</button><a>{{item.nombres}}</a><button class="boto" title="Agregar hermano(a)/pareja" data-toggle="tooltip">+</button>
+                <div><button class="boto" title="Agregar padre/madre" data-toggle="tooltip" (click)="openDialog()">+</button></div>
+                <button class="boto" title="Agregar hermano(a)/pareja" data-toggle="tooltip" (click)="openDialog()">+</button><a>{{item.nombres}}</a><button class="boto" title="Agregar hermano(a)/pareja" data-toggle="tooltip" (click)="openDialog()">+</button>
                 <ul *ngIf="item.hijo.length>0; else loggedOut">
                     <app-boton [h]=item.hijo largo={{item.hijo.length}}></app-boton>
                 </ul>

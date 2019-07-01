@@ -12,7 +12,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { VistaArbolComponent } from "./components/vista-arbol/vista-arbol.component";
 import { BotonComponent } from './components/boton/boton.component';
-
+import { MatDialogModule, MatButtonModule, MatCheckboxModule, MatTableModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DialogComponent } from './components/dialog/dialog.component'
 
 @NgModule({
   declarations: [
@@ -21,14 +23,21 @@ import { BotonComponent } from './components/boton/boton.component';
     DashboardComponent,
     AboutComponent,
     VistaArbolComponent,
-    BotonComponent
+    BotonComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatTableModule
   ],
+  entryComponents: [DialogComponent],
   providers: [
     DataApiService
   ],
