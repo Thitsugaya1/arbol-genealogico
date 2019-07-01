@@ -3,6 +3,11 @@
   padding: 0;
 }
 
+.boto{
+  border-radius: 50%;padding-left: 7px;
+  padding-right: 7px; background-color: #857b26;
+  color: white; font-size: 25px
+}
 
 
 .tree ul {
@@ -33,7 +38,7 @@
   position: absolute;
   top: 0;
   right: 50%;
-  border-top: 1px solid #ccc;
+  border-top: 2px solid #ccc;
   width: 50%;
   height: 20px;
 }
@@ -41,7 +46,7 @@
 .tree li::after {
   right: auto;
   left: 50%;
-  border-left: 1px solid #ccc;
+  border-left: 5px solid #ccc;
 }
 
 
@@ -54,6 +59,7 @@
   padding-top: 0;
 }
 
+
 /*Removiendo el conector izquierdo del primero hijo y el conector derecho del ultimo*/
 .tree li:first-child::before, .tree li:last-child::after {
   border: 0 none;
@@ -61,7 +67,7 @@
 
 /*Añadiendo el conector verticar a los ultimos nodos*/
 .tree li:last-child::before {
-  border-right: 1px solid #ccc;
+  border-right: 5px solid #ccc;
   border-radius: 0 5px 0 0;
   -webkit-border-radius: 0 5px 0 0;
   -moz-border-radius: 0 5px 0 0;
@@ -79,7 +85,7 @@
   position: absolute;
   top: 0;
   left: 50%;
-  border-left: 1px solid #ccc;
+  border-left: 5px solid #ccc;
   width: 0;
   height: 20px;
 }
@@ -187,7 +193,7 @@
 }
 
 .dash-section {
-  margin-left: 250px;
+  margin-left: 610px;
   font-size: 28px;
   padding: 70px 20px;
 }

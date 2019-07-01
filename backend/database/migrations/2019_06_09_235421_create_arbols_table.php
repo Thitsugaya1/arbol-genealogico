@@ -15,7 +15,7 @@ class CreateArbolsTable extends Migration
     {
         Schema::create('arbols', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombre');
+            $table->string('nombre', 32);
             $table->bigInteger('ref_usuario');
 
             $table->softDeletes();
