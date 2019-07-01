@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class CrearUsuarioController extends Controller
+class SingletonUsuario extends Controller
 {
     //
 }
