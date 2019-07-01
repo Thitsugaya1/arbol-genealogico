@@ -28,5 +28,6 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/arbol/{idarbol}/nodos', 'PersonaController@nuevaPersona');
     Route::get('/arbol/{id}', 'ArbolController@obtenerArbol');
     Route::get('/arbol/vacio', 'ArbolController@enviarArbolVacio');
-    Route::post('/arbol/{idarbol}/nodos/{idnodo}', 'PersonaController@editarPersona')
+    Route::post('/arbol/{idarbol}/nodos/{idnodo}', 'PersonaController@editarPersona');
+    Route::post('/arbol/{idarbol}/nodos/', 'ArbolController@eliminarNodo');
 });

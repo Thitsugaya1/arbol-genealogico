@@ -134,4 +134,10 @@ class ArbolController extends Controller
                         'relaciones'=>[]
         ], 201);
     }
+
+    public function eliminarNodo()
+    {
+        
+
+    }
 }
