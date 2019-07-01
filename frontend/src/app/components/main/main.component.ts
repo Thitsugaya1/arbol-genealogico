@@ -15,7 +15,7 @@ export class MainComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router, private toastr: ToastrService) { }
   private user: UserInterface = {
     correo: '',
-    nombre: '',
+    nombres: '',
     ap_paterno: '',
     ap_materno: '',
     contrasena: ''
@@ -24,7 +24,7 @@ export class MainComponent implements OnInit {
   onRegister(): void {
       this.authService.registerUser(
       this.user.correo,
-      this.user.nombre,
+      this.user.nombres,
       this.user.ap_paterno,
       this.user.ap_materno,
       this.user.contrasena,

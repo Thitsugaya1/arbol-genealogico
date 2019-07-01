@@ -24,7 +24,7 @@ class CuentaController extends Controller
     public function nuevoUsuario(Request $request)
     {
         //Variables necesarias que fueron ingresadas
-        $input = $request->only(['correo', 'nombre', 'ap_paterno', 'ap_materno', 'contrasena']);
+        $input = $request->only(['correo', 'nombres', 'ap_paterno', 'ap_materno', 'contrasena']);
         //Arreglo con los mensajes de error en español
         $mensajes_error = [
             'nombres.required'=> 'El nombre es obligatorio',
