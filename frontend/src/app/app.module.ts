@@ -27,12 +27,8 @@ import { ToastrModule } from 'ngx-toastr';
     DashboardComponent,
     AboutComponent,
     VistaArbolComponent,
-<<<<<<< HEAD
-    EditarPerfilComponent
-
-=======
+    EditarPerfilComponent,
     BotonComponent
->>>>>>> Nuggets-Desarrollo
   ],
   imports: [
     BrowserModule,

@@ -12,7 +12,7 @@ export class EditarPerfilComponent implements OnInit {
 
   private usuario: UserInterface = {
     correo: '',
-    nombre: '',
+    nombres: '',
     ap_paterno: '',
     ap_materno: '',
     contrasena: ''

@@ -1,13 +1,10 @@
-<<<<<<< HEAD
+
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Router} from '@angular/router';
 import {UserInterface} from 'src/app/models/user-interface';
 import { isNullOrUndefined } from 'util';
 import {AuthService} from '../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
-=======
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
->>>>>>> Nuggets-Desarrollo
 
 @Component({
   selector: 'app-dashboard',
@@ -31,14 +28,14 @@ export class DashboardComponent implements OnInit {
 
   private user: UserInterface = {
     correo: '',
-    nombre: '',
+    nombres: '',
     ap_paterno: '',
     ap_materno: '',
     contrasena: ''
   };
 
   ngOnInit() {
-<<<<<<< HEAD
+
     this.usuario = localStorage.getItem('currentUser');
     if(isNullOrUndefined(this.usuario)){
       this.router.navigate(['']);
@@ -61,14 +58,7 @@ export class DashboardComponent implements OnInit {
       a.appendChild(content);
       li.appendChild(a);
       ul.appendChild(li);
-=======
-    var ul = document.getElementById("ul-nav");
-    var items = ul.getElementsByTagName("li");
-    var aux;
-    for (var i = 0; i < items.length; i++) {
-      aux = items[i];
-      aux.setAttribute("class", "invisible");
->>>>>>> Nuggets-Desarrollo
+
     }
   }
 
