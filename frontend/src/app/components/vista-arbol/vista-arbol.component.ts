@@ -14,6 +14,7 @@ export class VistaArbolComponent implements OnInit {
       { nombres: "el bastardo", ap_paterno: "a", sexo: 1, is_vivo: "true", foto: "", hijo: [{ nombres: "Anuel AA", ap_paterno: "", sexo: 1, is_vivo: "true", foto: "", hijo: [] }] }, { nombres: "Pornlando", ap_paterno: "a", sexo: 1, is_vivo: "true", foto: "", hijo: [] }]
   }];
 
+  estado = false;
 
 
 
@@ -44,6 +45,15 @@ export class VistaArbolComponent implements OnInit {
     ul.appendChild(li);
   }
 
+abrirModal(){
+	if (this.estado == false){
+		this.estado = true;
+	}else{
+		this.estado = false;
+		this.lista = [{nombres: "El palomito abuelo", ap_paterno: "a", sexo: 1,is_vivo: "true", foto: "", hijo: this.lista }];
+	}
+	console.log(this.estado);
+}
   padre() {
 
     var abc = "<ul>";

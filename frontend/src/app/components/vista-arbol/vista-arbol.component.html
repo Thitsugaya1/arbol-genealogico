@@ -1,7 +1,24 @@
 <!DOCTYPE html>
 <html>
-
+      
 <div class="sidenav">
+
+<div *ngIf = "estado">
+     <!--<div id="modal">
+  <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum nihil id commodi ipsa vitae dolore molestiae minus enim. Nulla ut recusandae nemo quam autem minus totam impedit, quod accusamus optio?</p>
+</div>
+<input (click)="abrirModal()" id="cerrar-modal" name="modal" type="radio"/> 
+<label for="cerrar-modal"> X </label> -->
+
+<div id="modal1" class="modalmask">
+    <div class="modalbox movedown">
+        <a  (click)="abrirModal()" title="Close" class="close">X</a>
+        <h2>DESLIZAR</h2>
+        <p>La ventana modal aparece por arriba y se desliza hasta su posición. Un efecto simple pero elegante.</p>
+        <p>Aquí puedes incluir cualquier cosa como vídeos, mapas, formularios...</p>
+    </div>
+</div>
+</div>
 
     <div style="position: static">
         <!-- Se crea seccion donde esta el icono del usuario y los datos-->
@@ -65,6 +82,10 @@
         </ng-template>
 
         <button class="boto" mat-raised-button (click)="openDialog()" title="Agregar padre/madre" data-toggle="tooltip">+</button>
+
+<button class="boto" mat-raised-button (click)="abrirModal()" title="Agregar padre/madre" data-toggle="tooltip">Modal</button>
+
+
         <!--<div><button class="boto">+</button></div>
  
   <ul>
