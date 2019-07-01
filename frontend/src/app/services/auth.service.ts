@@ -27,7 +27,7 @@ export class AuthService {
   }
 
   loginUser(correo: string, contrasena: string): Observable<any> {
-    const urlApi = 'http://localhost:8000/api/register';
+    const urlApi = 'http://localhost:8000/api/login';
     return this.http.post<UserInterface>(urlApi,
       {correo, contrasena},
       {headers: this.headers})

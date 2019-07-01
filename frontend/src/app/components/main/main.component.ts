@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {UserInterface} from '../../models/user-interface';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -9,7 +10,7 @@ import {UserInterface} from '../../models/user-interface';
 })
 export class MainComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
   private user: UserInterface = {
     correo: '',
     nombre: '',
@@ -18,7 +19,7 @@ export class MainComponent implements OnInit {
     contrasena: ''
   };
 
-  onRegister() : void {
+  onRegister(): void {
     this.authService.registerUser(
       this.user.correo,
       this.user.nombre,
@@ -31,6 +32,21 @@ export class MainComponent implements OnInit {
       }
     );
   }
+  onLogin() {
+    return this.authService.loginUser(
+      this.user.correo,
+      this.user.contrasena,
+    ).subscribe(
+      data => {
+        console.log(data);
+        const token = data.id;
+        this.authService.setToken(token);
+        this.router.navigate(['dashboard']);
+      },
+      error => console.log(error)
+    );
+  }
+
   ngOnInit() {
   }
 
