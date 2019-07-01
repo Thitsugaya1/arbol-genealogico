@@ -219,9 +219,22 @@ class ArbolController extends Controller
         ], 200);
     }
 
-    public function eliminarNodo()
-    {
-        
-
+    /**
+     * Elimina una persona/nodo del arbol.
+     * @author Rodrigo Cordero
+     */
+    public function eliminarPersona(Request $request, $idarbol, $idnodo){
+        //verifica que el arbol exista
+        if(\App\Arbol::find($idarbol)==null)
+            return response()->json(['errors'   => ['El arbol seleccionado no existe']], 422);
+        //verifica que la persona exista
+        if(\App\Persona::find($idnodo)==null)
+            return response()->json(['errors'   => ['La persona seleccionado no existe']], 422);
+        //se guarda la persona en una variable
+        $persona = \App\Persona::find($idnodo);
+        //se elimina la persona
+        $persona->delete();
+        //mensaje de salida
+        return response()->json(['msg' => 'Persona eliminada con exito']);
     }
 }

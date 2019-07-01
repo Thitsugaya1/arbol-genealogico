@@ -39,4 +39,5 @@ Route::middleware('auth:api')->group(function () {
     // Nodos
     Route::post('/arbol/{idarbol}/nodos', 'PersonaController@nuevaPersona');
     Route::post('/arbol/{idarbol}/nodos/{idnodo}', 'PersonaController@editarPersona');
+    Route::delete('/arbol/{idarbol}/nodos/{idnodo}', 'PersonaController@eliminarPersona');
 });
