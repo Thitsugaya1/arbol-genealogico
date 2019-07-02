@@ -11,6 +11,7 @@ import { DataApiService } from './services/data-api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.component';
+import { ModificarArbolComponent } from './components/modificar-arbol/modificar-arbol.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.
     MainComponent,
     DashboardComponent,
     AboutComponent,
-    EditarPerfilComponent
+    EditarPerfilComponent,
+    ModificarArbolComponent
   ],
   imports: [
     BrowserModule,
