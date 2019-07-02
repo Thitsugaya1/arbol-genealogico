@@ -1,3 +1,138 @@
-<p>
-  boton works!
-</p>
+<div class="sidenav">
+    <div *ngIf="estado">
+        <div id="modal1" class="modalmask">
+            <div class="modalbox movedown">
+                <a (click)="abrirModal()" title="Cerrar" class="close">X</a>
+                <span class="modal_heading">
+                          INFORMACIÓN PADRE/MADRE
+                        </span>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-md-3">
+                            <div class="form-group">
+                                <label for="">Nombres</label>
+                                <div class="input-group">
+                                    <input name="inputName" id="inputName" type="text" required class="form-control" placeholder="Nombres">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Apellido paterno</label>
+                                <div class="input-group">
+                                    <input name="inputLastName" id="inputLastName" type="text" required class="form-control" placeholder="Apellido Paterno">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Sexo</label>
+                                <div class="input-group">
+                                    <select>
+                                                <option>Seleccione una opción</option>
+                                                <option>Masculino</option>
+                                                <option>Femenino</option>
+                                            </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Vive</label>
+                                <div class="input-group">
+                                    <select>
+                                                <option>Seleccione una opción</option>
+                                                <option>Sí</option>
+                                                <option>No</option>
+                                            </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="form-row align-items-center">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-secondary btn-md">Agregar</button>
+                            <!-- Se crea el botón
+                                  registrate -->
+                        </div>
+                        <div class="col-md-4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="estado2">
+        <div id="modal2" class="modalmask">
+            <div class="modalbox movedown">
+                <a (click)="abrirModal2()" title="Cerrar" class="close">X</a>
+                <span class="modal_heading">
+                          INFORMACIÓN HERMANO/HERMANA
+                        </span>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-md-3">
+                            <div class="form-group">
+                                <label for="">Nombres</label>
+                                <div class="input-group">
+                                    <input name="inputName" id="inputName" type="text" required class="form-control" placeholder="Nombres">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Apellido paterno</label>
+                                <div class="input-group">
+                                    <input name="inputLastName" id="inputLastName" type="text" required class="form-control" placeholder="Apellido Paterno">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Sexo</label>
+                                <div class="input-group">
+                                    <select>
+                                        <option>Seleccione una opción</option>
+                                        <option>Masculino</option>
+                                        <option>Femenino</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Vive</label>
+                                <div class="input-group">
+                                    <select>
+                                        <option>Seleccione una opción</option>
+                                        <option>Sí</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="form-row align-items-center">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-secondary btn-md">Agregar</button>
+                            <!-- Se crea el botón
+                                  registrate -->
+                        </div>
+                        <div class="col-md-4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Botones de la barra-->
+    <a href="#vaciar">Vaciar árbol</a>
+    <a href="#copiar">Copiar árbol</a>
+    <a href="#exportar">Exportar árbol</a>
+</div>
+
+<ng-container *ngIf="largo>0; else loggedOut">
+    <ul>
+        <ng-container *ngFor="let x of h">
+            <li><button class="boto" title="Agregar hermano(a)/pareja" data-toggle="tooltip" (click)="abrirModal2()">+</button><a>{{x.nombres}}</a><button class="boto" title="Agregar hermano(a)/pareja" (click)="abrirModal2()">+</button>
+                <app-boton [h]=x.hijo largo={{x.hijo.length}}></app-boton>
+            </li>
+        </ng-container>
+    </ul>
+</ng-container>
+<ng-template #loggedOut>
+    <div><button class="boto" title="Agregar hijo(a)" (click)="openDialog()">+</button></div>
+</ng-template>
