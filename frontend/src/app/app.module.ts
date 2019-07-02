@@ -10,22 +10,36 @@ import { AboutComponent } from './components/about/about.component';
 import { DataApiService } from './services/data-api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { VistaArbolComponent } from "./components/vista-arbol/vista-arbol.component";
+import { BotonComponent } from './components/boton/boton.component';
+
+
+import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     DashboardComponent,
-    AboutComponent
+    AboutComponent,
+    VistaArbolComponent,
+    EditarPerfilComponent,
+    BotonComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ToastrModule.forRoot()
   ],
   providers: [
-    DataApiService
+    DataApiService,
   ],
   bootstrap: [AppComponent]
 })

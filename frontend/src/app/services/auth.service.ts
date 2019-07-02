@@ -16,9 +16,9 @@ export class AuthService {
     'Access-Control-Allow-Origin': '*',
   });
 
-  registerUser(correo: string, nombre: string, ap_paterno: string, ap_materno: string, contrasena: string){
+  registerUser(correo: string, nombres: string, ap_paterno: string, ap_materno: string, contrasena: string){
     const urlApi = 'http://localhost:8000/api/register';
-    let json_body = {correo: correo, nombre: nombre, ap_paterno: ap_paterno, ap_materno: ap_materno, contrasena: contrasena};
+    let json_body = {correo: correo, nombres: nombres, ap_paterno: ap_paterno, ap_materno: ap_materno, contrasena: contrasena};
     return this.http.post<UserInterface>(
       urlApi,
       json_body,
@@ -48,9 +48,10 @@ export class AuthService {
   }
 
   getCurrentUser(): UserInterface {
-    const userString = localStorage.getItem('currentUser');
+    const userString = localStorage.getItem("currentUser");
     if (!isNullOrUndefined(userString)) {
-      return JSON.parse(userString);
+
+      return JSON.parse(userString.toString());
     } else {
       return null;
     }

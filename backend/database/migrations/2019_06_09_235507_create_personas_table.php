@@ -15,11 +15,12 @@ class CreatePersonasTable extends Migration
     {
         Schema::create('personas', function (Blueprint $table) {
             $table->bigIncrements('id');
-			$table->string('nombre');
+			$table->string('nombres', 32);
 			$table->string('ap_paterno');
 			$table->string('ap_materno');
 			$table->integer('sexo');
 			$table->boolean('is_vivo');
+			$table->string('foto');
 			$table->bigInteger('ref_arbol')->nullable();;
 			$table->softDeletes();
             $table->timestamps();

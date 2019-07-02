@@ -1,0 +1,80 @@
+.sidenav {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 60px;
+}
+.letra{
+  color: #ffffffff;
+}
+.letra2{
+
+  text-transform: none;
+  color: #818181;
+  font-size: 1.2rem;
+
+}
+.circle{
+  width: 50px;
+  height: 50px;
+  background:#818181;
+  border-radius: 50%;
+}
+.circle2{
+  width: 200px;
+  height: 200px;
+  padding: 10px;
+  margin: 10px;
+  float: center;
+  background:#818181;
+  border-radius: 50%;
+}
+.circle2 > .imagen2{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+
+}
+.circle > .imagen{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+
+}
+.btn-secondary {
+  border-width: medium;
+  border-radius: 0;
+  text-transform: none;
+  font-size: 1.2rem;
+  padding: .6rem 1.2rem;
+  color: white;
+  background-color: #E74C3C;
+  border-color: #E74C3C;
+}
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #818181;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.dash-section {
+  margin-left: 160px;
+  font-size: 28px;
+  padding: 70px 20px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}

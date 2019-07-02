@@ -30,20 +30,20 @@
               <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Contraseña"
                      [(ngModel)]="user.contrasena" name="contrasena" required>
             </div>
-            <div class="checkbox">
+            <div class="checkbox letra-color" >
               <label>
                 <input type="checkbox"> Recordar<!-- Se crea la opción de recordar la cuenta -->
               </label>
             </div>
 
             <div class="custom-box centerbtn">
-              <button class="btn btn-outline-light btn-lg btn-iniciar" type="submit">Ingresar</button>  <!-- Se crea el botón de ingresar a la cuenta del usuario -->
+              <button class="btn btn-outline-light btn-lg btn-iniciar" type="submit" >Ingresar</button>  <!-- Se crea el botón de ingresar a la cuenta del usuario -->
             </div>
-            <div class="">
-              <h1> </h1>
-              <a  href="#sectionc" class="letra-color centerbtn" > Regístrate</a> <!-- Se crea el boton registrate -->
+              <div class="">
+                <div class="let centerbtn">
+                  <p>Si no tienes una cuenta <a href="#sectionc" class="letra-color centerbtn " >Regístrate</a> <!-- Se crea el link  registrate --></p>
+                </div>
             </div>
-
           </form>
         </div>
       </div>
@@ -175,7 +175,7 @@
         <div class="form-group col-md-4">
           <label for="inputAddress1">Nombre</label>
           <input type="text" class="form-control" id="inputAddress1" placeholder="Dennis MacAlistair"
-                 [(ngModel)]="user.nombre" name="nombre" required>
+                 [(ngModel)]="user.nombres" name="nombres" required>
         </div>
 
         <div class="form-group col-md-4">
@@ -195,7 +195,7 @@
       <div class="form-row align-items-center">
         <div class="col-md-4"></div>
         <div class="col-md-4">
-          <button type="submit" class="btn btn-secondary btn-md" >Registrarse</button> <!-- Se crea el botón
+          <button  type="submit" class="btn btn-secondary btn-md" >Registrarse</button> <!-- Se crea el botón
           registrate -->
         </div>
         <div class="col-md-4"></div>
