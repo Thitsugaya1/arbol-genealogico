@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Router} from '@angular/router';
@@ -6,11 +5,9 @@ import {UserInterface} from 'src/app/models/user-interface';
 import { isNullOrUndefined } from 'util';
 import {AuthService} from '../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
-=======
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { DialogComponent } from '../dialog/dialog.component';
->>>>>>> Nuggets-Desarrollo
+
 
 @Component({
   selector: 'app-dashboard',
@@ -29,12 +26,9 @@ export class DashboardComponent implements OnInit {
   estado = false;
   estado2 = false;
 
-  constructor(public dialog: MatDialog) { }
-
-<<<<<<< HEAD
    usuario = {};
 
-  constructor(private router: Router, private authService: AuthService, private toastr: ToastrService) { }
+  constructor(public dialog: MatDialog,private router: Router, private authService: AuthService, private toastr: ToastrService) { }
 
   private user: UserInterface = {
     correo: '',
@@ -43,7 +37,7 @@ export class DashboardComponent implements OnInit {
     ap_materno: '',
     contrasena: ''
   };
-=======
+
   openDialog(): void {
     console.log("entró");
     const dialogRef = this.dialog.open(DialogComponent, {
@@ -76,7 +70,6 @@ export class DashboardComponent implements OnInit {
     }
     console.log(this.estado2);
   }
->>>>>>> Nuggets-Desarrollo
 
   ngOnInit() {
 
