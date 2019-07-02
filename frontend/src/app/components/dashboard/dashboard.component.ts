@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Router} from '@angular/router';
@@ -5,6 +6,11 @@ import {UserInterface} from 'src/app/models/user-interface';
 import { isNullOrUndefined } from 'util';
 import {AuthService} from '../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
+=======
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { DialogComponent } from '../dialog/dialog.component';
+>>>>>>> Nuggets-Desarrollo
 
 @Component({
   selector: 'app-dashboard',
@@ -20,8 +26,12 @@ export class DashboardComponent implements OnInit {
   testeo = '';
   wtf = '<app-boton></app-boton>';
   boton = '<div><button class="boton">+</button></div>';
+  estado = false;
+  estado2 = false;
 
+  constructor(public dialog: MatDialog) { }
 
+<<<<<<< HEAD
    usuario = {};
 
   constructor(private router: Router, private authService: AuthService, private toastr: ToastrService) { }
@@ -33,6 +43,40 @@ export class DashboardComponent implements OnInit {
     ap_materno: '',
     contrasena: ''
   };
+=======
+  openDialog(): void {
+    console.log("entró");
+    const dialogRef = this.dialog.open(DialogComponent, {
+      data: { myVar: "My var" }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(result);
+    });
+  }
+
+
+  abrirModal() {
+    if (this.estado == false) {
+      this.estado = true;
+    } else {
+      this.estado = false;
+      this.lista = [{nombres: "El palomito abuelo", ap_paterno: "a", sexo: 1,is_vivo: "true", foto: "", hijo: this.lista }];
+    }
+    console.log(this.estado);
+  }
+
+  abrirModal2() {
+    if (this.estado2 == false) {
+      this.estado2 = true;
+    } else {
+      this.estado2 = false;
+      //this.lista = [{nombres: "El palomito abuelo", ap_paterno: "a", sexo: 1,is_vivo: "true", foto: "", hijo: this.lista }];
+    }
+    console.log(this.estado2);
+  }
+>>>>>>> Nuggets-Desarrollo
 
   ngOnInit() {
 

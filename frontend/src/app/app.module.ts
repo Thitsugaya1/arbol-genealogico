@@ -12,7 +12,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { VistaArbolComponent } from "./components/vista-arbol/vista-arbol.component";
 import { BotonComponent } from './components/boton/boton.component';
-
+import { MatDialogModule, MatButtonModule, MatCheckboxModule, MatTableModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DialogComponent } from './components/dialog/dialog.component'
 
 import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.component';
 
@@ -27,8 +29,13 @@ import { ToastrModule } from 'ngx-toastr';
     DashboardComponent,
     AboutComponent,
     VistaArbolComponent,
+<<<<<<< HEAD
     EditarPerfilComponent,
     BotonComponent
+=======
+    BotonComponent,
+    DialogComponent
+>>>>>>> Nuggets-Desarrollo
   ],
   imports: [
     BrowserModule,
@@ -36,8 +43,17 @@ import { ToastrModule } from 'ngx-toastr';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+<<<<<<< HEAD
     ToastrModule.forRoot()
+=======
+    MatDialogModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatTableModule
+>>>>>>> Nuggets-Desarrollo
   ],
+  entryComponents: [DialogComponent],
   providers: [
     DataApiService,
   ],
