@@ -15,6 +15,7 @@ export class BotonComponent implements OnInit {
 
   estado = false;
   estado2 = false;
+  estado3 = false;
   constructor(public dialog: MatDialog) { }
 
   openDialog(): void {
@@ -47,6 +48,16 @@ export class BotonComponent implements OnInit {
       //this.lista = [{nombres: "El palomito abuelo", ap_paterno: "a", sexo: 1,is_vivo: "true", foto: "", hijo: this.lista }];
     }
     console.log(this.estado2);
+  }
+
+  abrirModal3() {
+    if (this.estado3 == false) {
+      this.estado3 = true;
+    } else {
+      this.estado3 = false;
+      //this.lista = [{nombres: "El palomito abuelo", ap_paterno: "a", sexo: 1,is_vivo: "true", foto: "", hijo: this.lista }];
+    }
+    console.log(this.estado3);
   }
   ngOnInit() {
 

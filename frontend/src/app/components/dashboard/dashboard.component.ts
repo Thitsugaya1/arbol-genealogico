@@ -39,7 +39,7 @@ export class DashboardComponent implements OnInit {
       this.estado = true;
     } else {
       this.estado = false;
-      //this.lista = [{nombres: "El palomito abuelo", ap_paterno: "a", sexo: 1,is_vivo: "true", foto: "", hijo: this.lista }];
+      this.lista = [{nombres: "El palomito abuelo", ap_paterno: "a", sexo: 1,is_vivo: "true", foto: "", hijo: this.lista }];
     }
     console.log(this.estado);
   }
