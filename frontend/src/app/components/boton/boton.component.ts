@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { DialogComponent } from '../dialog/dialog.component';
 
@@ -12,12 +12,30 @@ import { DialogComponent } from '../dialog/dialog.component';
 export class BotonComponent implements OnInit {
   @Input() h: any[];
   @Input() largo;
-
+  @Input() registro: Function;
+  @Output() remove = new EventEmitter;
   estado = false;
+  contador = "";
+  @Input()  juan;
   estado2 = false;
   estado3 = false;
   constructor(public dialog: MatDialog) { }
 
+  ingreso(event): void{
+    this.remove.emit({datos:""+this.contador});
+    console.log("aqui");
+  }
+
+  recursivo(event){
+    this.remove.emit({datos:""+this.contador});
+  }
+
+  modifica(test){
+    this.contador = test.value;
+    console.log(test.value);
+    this.remove.emit({datos:""+test.value});
+    
+  }
   openDialog(): void {
     console.log("entró");
     const dialogRef = this.dialog.open(DialogComponent, {

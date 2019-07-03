@@ -133,11 +133,11 @@
         <br>
         <ul>
             <!--Se va creando el arbol de manera recursiva-->
-            <li *ngFor="let item of lista">
+            <li *ngFor="let item of lista" >
                 <div><button class="boto" title="Agregar padre/madre" data-toggle="tooltip" (click)="abrirModal()">+</button></div>
                 <button class="boto" title="Agregar hermano(a)/pareja" data-toggle="tooltip" (click)="abrirModal2()">+</button><a>{{item.nombres}}</a><button class="boto" title="Agregar hermano(a)/pareja" data-toggle="tooltip" (click)="abrirModal2()">+</button>
                 <ul *ngIf="item.hijo.length>0; else loggedOut">
-                    <app-boton [h]=item.hijo largo={{item.hijo.length}}></app-boton>
+                    <app-boton [h]=item.hijo largo={{item.hijo.length}} (remove) = "registrarPersona($event)"></app-boton>
                 </ul>
             </li>
         </ul>

@@ -106,11 +106,17 @@
                     </div>
                 </div>
             </div>
+            <form (submit) = "modifica(test)">
+                <input type = "text" #test>
+                <button>
+                    Enviar
+                </button>
+            </form>
             <div class="container">
                 <div class="form-row align-items-center">
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
-                        <button type="submit" class="btn btn-secondary btn-md">Agregar</button>
+                        <button (click) = "ingreso()" type="submit" class="btn btn-secondary btn-md">Agregar</button>
                         <!-- Se crea el botón
                                   registrate -->
                     </div>
@@ -187,15 +193,19 @@
 <ng-container *ngIf="largo>0; else loggedOut">
     <ul>
         <ng-container *ngFor="let x of h">
-            <li><button class="boto" title="Agregar hermano(a)/pareja" data-toggle="tooltip" (click)="abrirModal2()">+</button><a>{{x.nombres}}</a><button class="boto" title="Agregar hermano(a)/pareja" (click)="abrirModal2()">+</button>
-                <app-boton [h]=x.hijo largo={{x.hijo.length}}></app-boton>
+            <li><button class="boto" title="Agregar hermano(a)/pareja" data-toggle="tooltip" (click)="abrirModal2()">Der</button><a>{{x.nombres}}</a><button class="boto" title="Agregar hermano(a)/pareja" (click)="abrirModal2()">+</button>
+                <app-boton [h]=x.hijo largo={{x.hijo.length}} (remove) = "ingreso($event)"></app-boton>
+         
+                            
             </li>
         </ng-container>
+        
     </ul>
 </ng-container>
+
 <ng-template #loggedOut>
     <div><button class="boto" title="Agregar hijo(a)" (click)="abrirModal3()">+</button></div>
 </ng-template>
-
+<button (click)="modifica('Pyl')">abc</button>
 
 </html>

@@ -13,7 +13,7 @@ export class DashboardComponent implements OnInit {
     nombres: "perro", ap_paterno: "a", sexo: 1, is_vivo: "true", foto: "", hijo: [
       { nombres: "el bastardo", ap_paterno: "a", sexo: 1, is_vivo: "true", foto: "", hijo: [{ nombres: "Anuel AA", ap_paterno: "", sexo: 1, is_vivo: "true", foto: "", hijo: [] }] }, { nombres: "Pornlando", ap_paterno: "a", sexo: 1, is_vivo: "true", foto: "", hijo: [] }]
   }];
-  testeo = '';
+  testeo = 'Hola';
   wtf = '<app-boton></app-boton>';
   boton = '<div><button class="boton">+</button></div>';
   estado = false;
@@ -33,13 +33,17 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  registrarPersona(event){
+    console.log(event.datos);
+    this.lista = [{nombres: event.datos, ap_paterno: "a", sexo: 1,is_vivo: "true", foto: "", hijo: this.lista }];
+  }
 
   abrirModal() {
     if (this.estado == false) {
       this.estado = true;
     } else {
       this.estado = false;
-      this.lista = [{nombres: "El palomito abuelo", ap_paterno: "a", sexo: 1,is_vivo: "true", foto: "", hijo: this.lista }];
+      //this.lista = [{nombres: "El palomito abuelo", ap_paterno: "a", sexo: 1,is_vivo: "true", foto: "", hijo: this.lista }];
     }
     console.log(this.estado);
   }
@@ -73,47 +77,6 @@ export class DashboardComponent implements OnInit {
     ul.appendChild(li);
   }
 
-  /**
-   * Funcion que busca desde el padre a los hijos de este.
-   */
-  padre() {
-    var abc = "<ul>";
-    for (var i = 0; i < this.lista.length; i++) {
-      abc = abc + '<li><app-boton></app-boton>';
-      abc = abc + '<a>' + this.lista[i].nombres + '</a>';
-      if (this.lista[i].hijo.length > 0) {
-        abc = abc + this.hijo(this.lista[i].hijo[0].nombres);
-      }
-      abc = abc + '</li>';
-    }
-    abc = abc + this.hermano('tapir');
-    this.testeo = abc + '</ul>';
-    console.log(this.testeo);
-    return this.testeo;
-  }
-
-  /**
-   * Funcion que crea el recuadro en pantalla de un hermano.
-   * @param nombre 
-   */
-  hermano(nombre) {
-    var abcd = '';
-    abcd = '<li>';
-    abcd = abcd + '<a>' + nombre + '</a>';
-    abcd = abcd + '</li>';
-    return abcd;
-  }
-
-  /**
-   * Funcion que crea el recuadro en pantalla de un hijo.
-   * @param nombre 
-   */
-  hijo(nombre) {
-    var abcd = '';
-    abcd = '<ul><li>';
-    abcd = abcd + '<a>' + nombre + '</a>';
-    abcd = abcd + '</li></ul>';
-    return abcd;
-  }
+  
 
 }
